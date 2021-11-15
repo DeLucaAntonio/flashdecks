@@ -11,13 +11,14 @@ public struct DbConfig: Codable {
     var flashdecks: [String]
 }
 
-public struct Flashdecks: Codable {
+public struct Flashdeck: Codable {
     var id: String
+    var description: String
     var name: String
-    var flashcards: [Flashcards]
+    var flashcards: [Flashcard]
 }
 
-public struct Flashcards: Codable {
+public struct Flashcard: Codable {
     var id: String
     var name: String
     var description: String

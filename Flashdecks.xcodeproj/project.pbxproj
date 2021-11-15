@@ -81,17 +81,16 @@
 			isa = PBXGroup;
 			children = (
 				837812D42741156900A705D3 /* data */,
-				837812D0274114B000A705D3 /* schemas */,
 			);
 			path = db;
 			sourceTree = "<group>";
 		};
-		837812D0274114B000A705D3 /* schemas */ = {
+		837812D0274114B000A705D3 /* models */ = {
 			isa = PBXGroup;
 			children = (
 				837812CE2741127000A705D3 /* Db.swift */,
 			);
-			path = schemas;
+			path = models;
 			sourceTree = "<group>";
 		};
 		837812D1274114FD00A705D3 /* hooks */ = {
@@ -141,6 +140,7 @@
 		83CD2E1C273E80490093AD90 /* Flashdecks */ = {
 			isa = PBXGroup;
 			children = (
+				837812D0274114B000A705D3 /* models */,
 				837812D1274114FD00A705D3 /* hooks */,
 				837812C82741106200A705D3 /* db */,
 				83CD2E1D273E80490093AD90 /* FlashdecksApp.swift */,
@@ -471,6 +471,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Flashdecks/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -499,6 +500,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Flashdecks/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
