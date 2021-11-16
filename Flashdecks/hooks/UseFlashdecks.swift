@@ -54,6 +54,52 @@ public class UseFlashdecks {
     
     //*********************************************************************** DECKS HANDLERS
     
+    enum action{
+        case delete
+        case update
+    }
+    
+    func handleUpdDelDeck(newDeck: Flashdeck, action: action) -> Bool {
+        do {
+            for (index, deck) in deckList.enumerated(){
+                if(deck.id == newDeck.id){
+                    
+                    // Delete action
+                    if(action == .delete){
+                        
+                        deckList.remove(at: index)
+                        try FileManager.default.removeItem(at: URL(string: "\(decksCardsFolderUrl!.absoluteString)\(deck.id).json")!)
+                        
+                        return true
+                    }else{
+                        // Update new deck
+                        // Assign new deck to deck list object
+                        deckList[index] = newDeck
+                        
+                        try FileManager.default.removeItem(at: URL(string: "\(decksCardsFolderUrl!.absoluteString)\(deck.id).json")!)
+                        
+                        // Encoding new deck to json
+                        let jsonData = try JSONEncoder().encode(newDeck)
+                        
+                        // Creating file path and appending new name
+                        var fileURL = decksCardsFolderUrl!.appendingPathComponent(String(newDeck.id))
+                        fileURL = fileURL.appendingPathExtension("json")
+                        let jsonString = String(data: jsonData, encoding: .utf8)!
+                        
+                        // Writing the data in folder
+                        try jsonString.write(to: fileURL, atomically: true, encoding: String.Encoding.utf8)
+                        
+                        return true
+                    }
+                }
+            }
+            return false
+        } catch {
+            print(error)
+            return false
+        }
+    }
+    
     func createDeck(name: String, description: String) -> Bool {
         let deckId = Int(NSDate().timeIntervalSince1970)
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -84,23 +130,8 @@ public class UseFlashdecks {
         }
     }
     
-    func deleteDeck(deckId: String) -> Bool {
-        do {
-            try FileManager.default.removeItem(at: URL(string: "\(decksCardsFolderUrl!.absoluteString)\(deckId).json")!)
-            
-            if let idIndex = db.flashdecks.firstIndex(of: deckId){
-                // We update the db object
-                db.flashdecks.remove(at: idIndex)
-                
-                // We update the db json file
-                let newDb = try JSONEncoder().encode(db)
-                try newDb.write(to: dbLocation!)
-            }
-            return true
-        } catch  {
-            print("Error deleteDeck: \(error)")
-            return false
-        }
+    func deleteDeck(deckToDelete: Flashdeck) -> Bool {
+        return handleUpdDelDeck(newDeck: deckToDelete, action: .delete)
     }
     
     func getDeck(deckId: String) -> Flashdeck?{
@@ -112,8 +143,10 @@ public class UseFlashdecks {
         }
         
         return nil
+    }
         
-        
+    func updateDeck(newDeck: Flashdeck) -> Bool {
+        return handleUpdDelDeck(newDeck: newDeck, action: .update)
     }
     
     //*********************************************************************** CARDS HANDLERS
