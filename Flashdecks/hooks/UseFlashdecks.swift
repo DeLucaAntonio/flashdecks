@@ -103,6 +103,19 @@ public class UseFlashdecks {
         }
     }
     
+    func getDeck(deckId: String) -> Flashdeck?{
+        
+        for deck in deckList {
+            if(deckId == deck.id){
+                return deck
+            }
+        }
+        
+        return nil
+        
+        
+    }
+    
     //*********************************************************************** CARDS HANDLERS
     
     func createCard(newFlashcard: Flashcard, deckId: String) -> Bool {
@@ -187,6 +200,24 @@ public class UseFlashdecks {
             print(error)
             return false
         }
+    }
+    
+    func getCard(deckId: String, cardId: String) -> Flashcard?{
+        
+        for deck in deckList {
+            if(deckId == deck.id){
+                for card in deck.flashcards{
+                    if(card.id == cardId){
+                        return card
+                    }
+                }
+            }
+        }
+        
+        return nil
+        
+       
+        
     }
     
 }
