@@ -14,9 +14,6 @@ struct ContentView: View {
     var body: some View {
         Text("Hello, world!")
             .padding()
-            .onTapGesture {
-                flashdecks.createDeck(name: "Nome", description: "Descri")
-            }
 
     }
 }
