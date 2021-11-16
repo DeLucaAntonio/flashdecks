@@ -17,12 +17,6 @@ struct ContentView: View {
             .onTapGesture {
                 flashdecks.createDeck(name: "Nome", description: "Descri")
             }
-        
-        Text("Delete")
-            .padding()
-            .onTapGesture {
-                flashdecks.deleteDeck("1636973573")
-            }
 
     }
 }
