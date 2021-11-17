@@ -18,13 +18,13 @@ struct ContentView: View {
     var body: some View {
        // Text("Hello, world!")
            // .padding()
-        VStack {
+        Form {
             TextField("name", text: $name)
             TextField("description", text: $description)
             Text(show)
             Button("Save") {
                 flashdecks.createDeck(name: name, description: description)
-                var deck = flashdecks.getDeckWithName(deckname: "Analisi 1")
+                var deck = flashdecks.getDeckWithName(deckname: name)
                 show = deck!.description
                 
                 
@@ -33,7 +33,7 @@ struct ContentView: View {
             }
             
 
-            }.navigationBarTitle("Settings")
+        }
        
     }
 }

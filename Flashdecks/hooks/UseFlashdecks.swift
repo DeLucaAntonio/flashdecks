@@ -119,7 +119,7 @@ public class UseFlashdecks {
                 db.flashdecks.append(String(deckId))
                 
                 let jsonDb = try JSONEncoder().encode(db)
-                try jsonDb.write(to: dbLocation!)
+                try jsonDb.write(to: dbLocation!) 
                 
                 deckList.append(newDeck)
                 
