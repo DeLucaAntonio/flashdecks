@@ -103,6 +103,7 @@ public class UseFlashdecks {
     func createDeck(name: String, description: String) -> Bool {
         let deckId = Int(NSDate().timeIntervalSince1970)
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        
         let newDeck = Flashdeck(id: String(deckId), description: description, name: name, flashcards: [])
         
         do {
@@ -120,6 +121,8 @@ public class UseFlashdecks {
                 let jsonDb = try JSONEncoder().encode(db)
                 try jsonDb.write(to: dbLocation!)
                 
+                deckList.append(newDeck)
+                
                 return true
             }
             return false
@@ -134,10 +137,22 @@ public class UseFlashdecks {
         return handleUpdDelDeck(newDeck: deckToDelete, action: .delete)
     }
     
-    func getDeck(deckId: String) -> Flashdeck?{
+    func getDeckWithID(deckId: String) -> Flashdeck?{
         
         for deck in deckList {
             if(deckId == deck.id){
+                return deck
+            }
+        }
+        
+        return nil
+    }
+    func getDeckWithName(deckname: String) -> Flashdeck?{
+        print(deckList)
+        
+        for deck in deckList {
+            
+            if(deckname == deck.name){
                 return deck
             }
         }
