@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let flashdecks = UseFlashdecks()
+    
     var body: some View {
         Text("Hello, world!")
             .padding()
+
     }
 }
 
