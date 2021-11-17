@@ -21,5 +21,6 @@ public struct Flashdeck: Codable {
 public struct Flashcard: Codable {
     var id: String
     var name: String
-    var description: String
+    var Keywords: [String]
+    var definition: String
 }
