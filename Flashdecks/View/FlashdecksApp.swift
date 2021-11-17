@@ -11,7 +11,10 @@ import SwiftUI
 struct FlashdecksApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //AverageDuration(hours: "1", minutes: "40", seconds: "35")
+            Home()
+            //SessionCompleted(sessionCompleted: "29")
+           // TotalSuccess(succes: "70")
         }
     }
 }
