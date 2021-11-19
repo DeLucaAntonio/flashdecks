@@ -23,20 +23,25 @@ public class UseFlashdecks: ObservableObject {
     
     func loadDecks(){
         // if let -> used to check if the let exists so you can run the code inside the braces {}
-        if let dbInitLocation = Bundle.main.url(forResource: "db", withExtension: "json"){
-            // do catch -> check if something goes wrong to handle errors
-            do {
+        do {
+            // check db file
+            let dbInitLocation = try FileManager().url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let dbURL = dbInitLocation.appendingPathComponent("db.json")
+            let dbExists = FileManager().fileExists(atPath: dbURL.path)
+            
+            if dbExists {
+                // do catch -> check if something goes wrong to handle errors
                 // Init our flashdecks and cards folder url
                 decksCardsFolderUrl = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
                 // we use do catch because Data() can return an error and we need to handle it
                 // Data() is used to read an URL location (our db file in that case)
-                let data = try Data(contentsOf: dbInitLocation)
+                let data = try Data(contentsOf: dbURL)
                 // we need a decoder to decode our json file (we use .self because we want to decode an array but not create a new one
                 let decodedData = try JSONDecoder().decode(DbConfig.self, from: data)
                 
                 // after we load our data we set our flashdecks var to them
                 db.self = decodedData
-                dbLocation.self = dbInitLocation
+                dbLocation.self = dbURL
                 
                 // Adding each flashdeck to our deckList object
                 for deckId in db.flashdecks {
@@ -46,12 +51,16 @@ public class UseFlashdecks: ObservableObject {
                     deckList.append(decodedFlashdeck)
                     
                 }
+            } else {
+                let dbEncoded = try JSONEncoder().encode(db)
+                try dbEncoded.write(to: dbURL)
                 
-                print(deckList)
-                                
-            } catch  {
-                print(error)
+                decksCardsFolderUrl = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                dbLocation.self = dbURL
             }
+            
+        } catch {
+            print(error)
         }
     }
     
@@ -76,14 +85,14 @@ public class UseFlashdecks: ObservableObject {
                         //rimuovo dall'oggetto db e poi scrivo le modifiche su file
                         let indexDb = db.flashdecks.firstIndex(of: deck.id)
                         db.flashdecks.remove(at: indexDb!)
-                       
+                        
                         let jsonDb = try JSONEncoder().encode(db)
                         try jsonDb.write(to: dbLocation!)
                         
                         for (index, flashdeck) in deckList.enumerated(){
-                           
+                            
                             if(deck.id == flashdeck.id){
-                               
+                                
                                 
                                 //aggiorno l'oggetto decklist
                                 deckList.remove(at: index)
@@ -143,7 +152,8 @@ public class UseFlashdecks: ObservableObject {
                 db.flashdecks.append(String(deckId))
                 
                 let jsonDb = try JSONEncoder().encode(db)
-                try jsonDb.write(to: dbLocation!) 
+                try FileManager.default.removeItem(at: URL(string: "\(decksCardsFolderUrl!.absoluteString)db.json")!)
+                try jsonDb.write(to: dbLocation!)
                 
                 deckList.append(newDeck)
                 
@@ -184,7 +194,7 @@ public class UseFlashdecks: ObservableObject {
         
         return nil
     }
-        
+    
     func updateDeck(newDeck: Flashdeck) -> Bool {
         return handleUpdDelDeck(newDeck: newDeck, action: .update)
     }
@@ -292,7 +302,7 @@ public class UseFlashdecks: ObservableObject {
         
         return nil
         
-       
+        
         
     }
     
