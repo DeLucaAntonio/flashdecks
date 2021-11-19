@@ -70,7 +70,32 @@ public class UseFlashdecks {
                         deckList.remove(at: index)
                         try FileManager.default.removeItem(at: URL(string: "\(decksCardsFolderUrl!.absoluteString)\(deck.id).json")!)
                         
-                        return true
+                        //rimuovo dall'oggetto db e poi scrivo le modifiche su file
+                        let indexDb = db.flashdecks.firstIndex(of: deck.id)
+                        db.flashdecks.remove(at: indexDb!)
+                       
+                        let jsonDb = try JSONEncoder().encode(db)
+                        try jsonDb.write(to: dbLocation!)
+                        
+                        for (index, flashdeck) in deckList.enumerated(){
+                           
+                            if(deck.id == flashdeck.id){
+                               
+                                
+                                //aggiorno l'oggetto decklist
+                                deckList.remove(at: index)
+                                
+                                return true
+                                
+                                
+                            }
+                            
+                        }
+                        
+                        
+                        
+                        
+                        return false
                     }else{
                         // Update new deck
                         // Assign new deck to deck list object
@@ -103,6 +128,7 @@ public class UseFlashdecks {
     func createDeck(name: String, description: String) -> Bool {
         let deckId = Int(NSDate().timeIntervalSince1970)
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        
         let newDeck = Flashdeck(id: String(deckId), description: description, name: name, flashcards: [])
         
         do {
@@ -118,7 +144,9 @@ public class UseFlashdecks {
                 db.flashdecks.append(String(deckId))
                 
                 let jsonDb = try JSONEncoder().encode(db)
-                try jsonDb.write(to: dbLocation!)
+                try jsonDb.write(to: dbLocation!) 
+                
+                deckList.append(newDeck)
                 
                 return true
             }
@@ -134,10 +162,23 @@ public class UseFlashdecks {
         return handleUpdDelDeck(newDeck: deckToDelete, action: .delete)
     }
     
-    func getDeck(deckId: String) -> Flashdeck?{
+    func getDeckWithID(deckId: String) -> Flashdeck?{
         
         for deck in deckList {
             if(deckId == deck.id){
+                return deck
+            }
+        }
+        
+        return nil
+    }
+    
+    func getDeckWithName(deckname: String) -> Flashdeck?{
+        print(deckList)
+        
+        for deck in deckList {
+            
+            if(deckname == deck.name){
                 return deck
             }
         }
@@ -153,12 +194,15 @@ public class UseFlashdecks {
     
     func createCard(newFlashcard: Flashcard, deckId: String) -> Bool {
         let flashdecks = db.flashdecks
+        let cardId = Int(NSDate().timeIntervalSince1970)
+        var cardToSave = newFlashcard
         
         if flashdecks.contains(deckId){
             for var deck in deckList {
                 if (deck.id == deckId) {
                     do {
                         // We are adding our card to the deck object
+                        cardToSave.id = String(cardId)
                         deck.flashcards.append(newFlashcard)
                         
                         // We remove the deck
@@ -166,7 +210,7 @@ public class UseFlashdecks {
                         
                         // We write the new deck
                         let updatedDeck = try JSONEncoder().encode(deck)
-                        try updatedDeck.write(to: decksCardsFolderUrl!)
+                        try updatedDeck.write(to: URL(string: "\(decksCardsFolderUrl!.absoluteString)\(deckId).json")!)
                         
                         return true
                     } catch {
@@ -193,7 +237,7 @@ public class UseFlashdecks {
                             
                             // We write the new deck
                             let updatedDeck = try JSONEncoder().encode(deck)
-                            try updatedDeck.write(to: decksCardsFolderUrl!)
+                            try updatedDeck.write(to: URL(string: "\(decksCardsFolderUrl!.absoluteString)\(deckId).json")!)
                             
                             return true
                         }
@@ -221,7 +265,7 @@ public class UseFlashdecks {
                             
                             // We write the new deck
                             let updatedDeck = try JSONEncoder().encode(deck)
-                            try updatedDeck.write(to: decksCardsFolderUrl!)
+                            try updatedDeck.write(to: URL(string: "\(decksCardsFolderUrl!.absoluteString)\(deckId).json")!)
                             
                             return true
                         }
