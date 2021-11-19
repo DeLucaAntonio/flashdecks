@@ -42,8 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8303F7C72747A18B00582462 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Home.swift; path = ../../../../../../Downloads/View/Home.swift; sourceTree = "<group>"; };
-		8303F7CF2747A1C900582462 /* ModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ModalView.swift; path = ../../../../../../Downloads/View/ModalView.swift; sourceTree = "<group>"; };
+		8303F7C72747A18B00582462 /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		8303F7CF2747A1C900582462 /* ModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		8303F7D92747A41100582462 /* AverageDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageDuration.swift; sourceTree = "<group>"; };
 		8303F7DA2747A42000582462 /* DeckRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRow.swift; sourceTree = "<group>"; };
 		8303F7DB2747A42000582462 /* TotalSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalSuccess.swift; sourceTree = "<group>"; };
