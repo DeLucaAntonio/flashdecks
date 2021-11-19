@@ -11,7 +11,7 @@ import SwiftUI
 struct FlashdecksApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Home().environment(\.colorScheme,.light)
         }
     }
 }

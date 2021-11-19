@@ -9,7 +9,7 @@
 import Foundation
 
 // public class to use all Flashdecks properties and functions
-public class UseFlashdecks {
+public class UseFlashdecks: ObservableObject {
     
     // Published used to maccess property with $ symbol
     @Published var db = DbConfig(flashdecks: [])    // Object of our db
@@ -44,7 +44,10 @@ public class UseFlashdecks {
                     let decodedFlashdeck = try JSONDecoder().decode(Flashdeck.self, from: flashDeckObject!)
                     
                     deckList.append(decodedFlashdeck)
+                    
                 }
+                
+                print(deckList)
                                 
             } catch  {
                 print(error)
@@ -87,13 +90,9 @@ public class UseFlashdecks {
                                 
                                 return true
                                 
-                                
                             }
                             
                         }
-                        
-                        
-                        
                         
                         return false
                     }else{
