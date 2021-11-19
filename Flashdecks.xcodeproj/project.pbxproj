@@ -17,6 +17,7 @@
 		83CD2E2F273E804B0093AD90 /* FlashdecksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CD2E2E273E804B0093AD90 /* FlashdecksTests.swift */; };
 		83CD2E39273E804B0093AD90 /* FlashdecksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CD2E38273E804B0093AD90 /* FlashdecksUITests.swift */; };
 		83CD2E3B273E804B0093AD90 /* FlashdecksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CD2E3A273E804B0093AD90 /* FlashdecksUITestsLaunchTests.swift */; };
+		FB24131D27453D1B00E072C4 /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24131C27453D1B00E072C4 /* FlashcardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		83CD2E34273E804B0093AD90 /* FlashdecksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashdecksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83CD2E38273E804B0093AD90 /* FlashdecksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashdecksUITests.swift; sourceTree = "<group>"; };
 		83CD2E3A273E804B0093AD90 /* FlashdecksUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashdecksUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FB24131C27453D1B00E072C4 /* FlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				83CD2E1F273E80490093AD90 /* ContentView.swift */,
 				83CD2E21273E804B0093AD90 /* Assets.xcassets */,
 				83CD2E23273E804B0093AD90 /* Preview Content */,
+				FB24131C27453D1B00E072C4 /* FlashcardView.swift */,
 			);
 			path = Flashdecks;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83CD2E20273E80490093AD90 /* ContentView.swift in Sources */,
+				FB24131D27453D1B00E072C4 /* FlashcardView.swift in Sources */,
 				837812CF2741127000A705D3 /* Db.swift in Sources */,
 				83CD2E1E273E80490093AD90 /* FlashdecksApp.swift in Sources */,
 				837812D32741151300A705D3 /* UseFlashdecks.swift in Sources */,
