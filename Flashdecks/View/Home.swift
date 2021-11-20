@@ -27,55 +27,24 @@ struct Home: View {
     
     var body: some View {
         
-        NavigationView{
+       NavigationView{ //BUGGED Perchè mi showa nella modal il titolo e il pulsante non blurrati
             
             GeometryReader { bounds in
                 VStack(alignment: .leading) {
                     
-                    HStack() {
-                        
-                        Text("Flashdecks")
-                            .fontWeight(.bold)
-                            .font(.largeTitle)
-                            .padding(.top, 10.0)
-                        
-                        Spacer()
-                        
-                        Button {
-                            withAnimation {
-                                modalViewActive.toggle()
-                            }
-                            
-                        } label: {
-                            Image(systemName: "plus")
-                                .font(.headline)
-                        }
-                        
-                        
-                    }.padding(.top, -40)
-                    
-                    
-                    
-                    
-                    Spacer()
-                    
-                    
-                    
+                   /*
                     HStack{
                         Text("Statistics")
                             .fontWeight(.bold)
                             .font(.title2)
                             .frame(width: 174, alignment: .topLeading)
                             .lineSpacing(28)
-                        
-                        
                         Spacer()
                         
                         
                     }
                     .padding(.top, 0.0)
-                    
-                    
+                    */
                     
                     HStack {
                         
@@ -111,9 +80,11 @@ struct Home: View {
                     visualDeck()
                     
                 }.padding()
-                    .blur(radius: modalViewActive ? 10 : 0)
                     .scaleEffect(modalViewActive ? 0.95 : 1)
-                
+                    .background(.black.opacity(modalViewActive ? 0.3: 0))
+                    .blur(radius: modalViewActive ? 8 : 0)
+                   
+                    
                 
                 if modalViewActive {
                     ZStack {
@@ -141,17 +112,31 @@ struct Home: View {
                     )
                 }
                 
-            }
+            } .navigationTitle("Flashdecks")
+               .navigationBarTitleDisplayMode(.large)
+               .navigationBarItems(trailing:
+                                    Button {
+                                        withAnimation {
+                                            modalViewActive.toggle()
+                                        }
+                                        
+                                    } label: {
+                                        Image(systemName: "plus.circle.fill")
+                                            .resizable()
+                                            .frame(width: 30.0, height: 30.0)
+                                            
+                                    })
             
-            
-        }.navigationBarHidden(true)
+       }.navigationBarHidden(true)
+           
+        
         
     }
     
     
     private func visualDeck() -> some View{
         
-        ScrollView(.vertical, showsIndicators: true) {
+        ScrollView(.vertical, showsIndicators: false) {
             
             ForEach(useFlashdecks.deckList) { deck in
                 DeckRow(deck: deck)

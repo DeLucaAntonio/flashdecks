@@ -22,6 +22,7 @@
 		83CD2E39273E804B0093AD90 /* FlashdecksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CD2E38273E804B0093AD90 /* FlashdecksUITests.swift */; };
 		83CD2E3B273E804B0093AD90 /* FlashdecksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CD2E3A273E804B0093AD90 /* FlashdecksUITestsLaunchTests.swift */; };
 		FB24131D27453D1B00E072C4 /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24131C27453D1B00E072C4 /* FlashcardView.swift */; };
+		FF4A40552748009D0011C6B2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4A40542748009D0011C6B2 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		83CD2E38273E804B0093AD90 /* FlashdecksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashdecksUITests.swift; sourceTree = "<group>"; };
 		83CD2E3A273E804B0093AD90 /* FlashdecksUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashdecksUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FB24131C27453D1B00E072C4 /* FlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
+		FF4A40542748009D0011C6B2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		FF4A4056274803A20011C6B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,7 @@
 		83CD2E1C273E80490093AD90 /* Flashdecks */ = {
 			isa = PBXGroup;
 			children = (
+				FF4A4056274803A20011C6B2 /* Info.plist */,
 				8303F7C62747A17200582462 /* View */,
 				837812D0274114B000A705D3 /* models */,
 				837812D1274114FD00A705D3 /* hooks */,
@@ -147,6 +151,7 @@
 				83CD2E21273E804B0093AD90 /* Assets.xcassets */,
 				83CD2E23273E804B0093AD90 /* Preview Content */,
 				FB24131C27453D1B00E072C4 /* FlashcardView.swift */,
+				FF4A40542748009D0011C6B2 /* Launch Screen.storyboard */,
 			);
 			path = Flashdecks;
 			sourceTree = "<group>";
@@ -280,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF4A40552748009D0011C6B2 /* Launch Screen.storyboard in Resources */,
 				83CD2E25273E804B0093AD90 /* Preview Assets.xcassets in Resources */,
 				83CD2E22273E804B0093AD90 /* Assets.xcassets in Resources */,
 			);
@@ -476,12 +482,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Flashdecks/Preview Content\"";
-				DEVELOPMENT_TEAM = GWYDYXC9AS;
+				DEVELOPMENT_TEAM = 55H4ABU399;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Flashdecks/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -489,7 +498,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Singularity.Flashdecks;
+				PRODUCT_BUNDLE_IDENTIFIER = "Singularity.Flashdecks-you";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -502,15 +511,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Flashdecks/Preview Content\"";
-				DEVELOPMENT_TEAM = GWYDYXC9AS;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Flashdecks/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -520,6 +532,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Singularity.Flashdecks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

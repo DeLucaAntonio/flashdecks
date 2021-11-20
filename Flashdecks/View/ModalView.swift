@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+//BUG -> Quando si scrive nel campo descrizione una descrizione lunga la tastiera sta in mezzo e copre quello che stai scrivendo.
+
+//KEYBOARD DISMISS TEXTFIELD
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
 
 
 struct ModalView: View {
@@ -17,20 +26,24 @@ struct ModalView: View {
     @State var descriptionDeck: String = ""
     @Binding var modalViewActive: Bool
     
+    //Flag per il bottone create
+    @State var isTermPresented = true
+    @State var isDefinitonPresented = true
+    
+    //DISMISS KEYBOARD VAR
+    @FocusState private var nameIsFocused: Bool
     
     var width: CGFloat
-    
-    
-    
+
     var body: some View {
         
         ZStack {
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 20)
                 .foregroundColor(.white)
                 .ignoresSafeArea()
-                .opacity(0.6)
+                .opacity(0.8)
             //.shadow(radius: 15)
-            //.shadow(color: .black, radius: 10, y: 5)
+                .shadow(color: .black, radius: 10, y: 5)
             VStack {
                 VStack(alignment:.leading) {
                     
@@ -41,15 +54,19 @@ struct ModalView: View {
                             }
                         } label: {
                             Text("Cancel")
-                            
+                                .fontWeight(.regular)
                                 .foregroundColor(Color(UIColor(named:"NavigationColor")!))
                             
                         }
                         Spacer()
+                        Text("Create a new deck")
+                            .fontWeight(.semibold)
+                        Spacer()
                         Button {
                             withAnimation {
+                                //STO IF ELSE CI SERVE VERAMENTE???
                                 if(nameDeck == "" || descriptionDeck == ""){
-                                    
+                                 //
                                 }else{
                                     let result = useFlashdeck.createDeck(name: nameDeck, description: descriptionDeck)
                                     
@@ -61,49 +78,70 @@ struct ModalView: View {
                             }
                         } label: {
                             Text("Create")
-                                .bold()
-                                .foregroundColor(Color(UIColor(named:"NavigationColor")!))
-                            
+                                .fontWeight(.semibold)
+                                
                         }
+                        .disabled(isDefinitonPresented||isTermPresented)
                     }
-                    .padding(.top, -100)
+                   
+                    .padding(.top, -85)
                     
                     Text("DeckTitle")
                         .fontWeight(.bold)
-                    TextField("DeckTitle", text: $nameDeck)
+                    TextField("DeckTitle", text: $nameDeck){  UIApplication.shared.endEditing()}
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 10)
                                 .foregroundColor(.white)
-                                .opacity(0.5)
-                                .shadow(radius: 7.5)
+                                .opacity(1)
+                             //   .shadow(radius: 7.5)
                         )
-                    
+                        .onChange(of: nameDeck, perform: { newterm in
+                            if newterm != nil {
+                                isTermPresented = false
+                            } else {
+                                isTermPresented = true
+                            }
+                        })
                     
                     
                     Text("Description")
                         .fontWeight(.bold)
-                    TextEditor(
-                        text: $descriptionDeck)
+                       
+                    TextEditor(text: $descriptionDeck)
                         .multilineTextAlignment(.leading)
                         .frame(height:250)
+                        .focused($nameIsFocused)
                         .padding()
                         .background(
                             RoundedRectangle(cornerRadius: 10)
                                 .foregroundColor(.white)
-                                .opacity(0.5)
-                                .shadow(radius: 7.5)
+                                .opacity(1)
+                             //   .shadow(radius: 7.5)
                         )
-                    
+                        .onChange(of: descriptionDeck, perform: { newdefinition in
+                           
+                            if newdefinition != nil {
+                                isDefinitonPresented = false
+                            } else {
+                                isDefinitonPresented = true
+                            }
+                        })
+                        
                 }
                 .frame(height: width * 1.45)
-                .padding(30)
+                .padding(24)
                 Spacer()
             }
         }
         
-        .offset(y: 70)
-        .background(.black.opacity(0.4))
+        .offset(y: 100)
+        
+        //ROBA PER DISMISSARE LA KEYBOARD QUANDO SI TAPPA FUORI DAL TEXTEDITOR
+        .onTapGesture {
+                nameIsFocused=false
+            }
+        
     }
     
 }
