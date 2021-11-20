@@ -30,24 +30,24 @@ struct TotalSuccess: View {
             .scaleEffect(1.2)
             .frame(width: 60, alignment: .topLeading)
             .foregroundColor(Color(UIColor(named: "ColorHomeStats")!))
-            
+            .padding(.trailing,40)
           
 
-            Text(succes)
+            Text("\(succes)%")
             .fontWeight(.bold)
             .font(.largeTitle)
             .multilineTextAlignment(.trailing)
-            .frame(width: 70, alignment: .leading)
+            .frame(width: 100, alignment: .leading)
             .scaleEffect(1.5, anchor: .center)
             .foregroundColor(.white)
            
             
-            Text("%")
+           /* Text("%")
             .font(.largeTitle)
             .fontWeight(.bold)
             .frame(width:30, alignment: .leading)
             .scaleEffect(1.7)
-            .foregroundColor(.white)
+            .foregroundColor(.white) */
         }
         //.padding(.leading, 16)
         //.padding(.trailing, 30)

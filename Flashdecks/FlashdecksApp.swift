@@ -12,6 +12,7 @@ struct FlashdecksApp: App {
     var body: some Scene {
         WindowGroup {
             Home().environment(\.colorScheme,.light)
+                
         }
     }
 }
