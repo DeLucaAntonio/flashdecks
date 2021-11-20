@@ -11,7 +11,7 @@ struct FinalStatsPage: View {
     
     @State var succ: String = "60"
     //passare le variabili di stato per le statistiche
-    
+    @State var buttonPressed: Bool = false
     var body: some View {
         
         
@@ -124,14 +124,14 @@ struct FinalStatsPage: View {
                     }
                     
                     Button(action: {
-                        
+                        buttonPressed.toggle()
                     }) {
-                
+                        
                         Text("Done")
                             .font(.title2)
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
-                           
+                            
                         
                     }
                 }
@@ -143,7 +143,7 @@ struct FinalStatsPage: View {
             
             
             
-        }
+        }.navigate(to: Home(), when: $buttonPressed)
         
     }
     
@@ -151,8 +151,36 @@ struct FinalStatsPage: View {
     
 }
 
-struct FinalStatsPage_Previews: PreviewProvider {
-    static var previews: some View {
-        FinalStatsPage()
+//struct FinalStatsPage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FinalStatsPage()
+//    }
+//}
+
+
+
+extension View {
+    /// Navigate to a new view.
+    /// - Parameters:
+    ///   - view: View to navigate to.
+    ///   - binding: Only navigates when this condition is `true`.
+    func navigate<NewView: View>(to view: NewView, when binding: Binding<Bool>) -> some View {
+        NavigationView {
+            ZStack {
+                self
+                    .navigationBarTitle("")
+                    .navigationBarHidden(true)
+
+                NavigationLink(
+                    destination: view
+                        .navigationBarTitle("")
+                        .navigationBarHidden(true),
+                    isActive: binding
+                ) {
+                    EmptyView()
+                }
+            }
+        }
+        .navigationViewStyle(.stack)
     }
 }

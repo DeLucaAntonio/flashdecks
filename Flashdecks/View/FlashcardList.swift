@@ -31,7 +31,7 @@ struct FlashcardList: View {
     var body: some View {
         
         VStack{
-            
+            Text("deck.name")
             //TITLE AND DESCRIPTION OF THE DECK
             Text("deck.description")
                 .fontWeight(.regular)
@@ -86,7 +86,7 @@ struct FlashcardList: View {
         }
         
         // PROPRIETIES OF NAVIGATION
-        .navigationTitle("Calculus 1")
+        //.navigationTitle("Calculus 1")
         .toolbar{
             Button("Edit"){
                 //AZIONE

@@ -11,7 +11,6 @@ struct TotalDeck: View {
     @StateObject var useFlashdecks = UseFlashdecks()
     
     var body: some View {
-       
         
         VStack(alignment: .leading){
             
@@ -21,25 +20,31 @@ struct TotalDeck: View {
                     .font(.largeTitle)
                     .padding([.top, .leading], 10.0)
                 
-
+                
             }
-         
+            
             
             
             visualDeck()
         }.padding()
         
         
+    
+    
     }
-    
-    
     private func visualDeck() -> some View{
         
         ScrollView(.vertical, showsIndicators: true) {
-            
-            ForEach(useFlashdecks.deckList) { deck in
-                DeckRow(deck: deck)
-            }
+           
+                ForEach(useFlashdecks.deckList) { deck in
+                    NavigationLink(destination: FlashcardList(), label: {
+                        DeckRow(deck: deck)
+                    })
+                   
+                    
+                    
+                }
+        
             
         }
         
