@@ -23,6 +23,8 @@
 		83CD2E3B273E804B0093AD90 /* FlashdecksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CD2E3A273E804B0093AD90 /* FlashdecksUITestsLaunchTests.swift */; };
 		FB24131D27453D1B00E072C4 /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24131C27453D1B00E072C4 /* FlashcardView.swift */; };
 		FF4A40552748009D0011C6B2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4A40542748009D0011C6B2 /* Launch Screen.storyboard */; };
+		FFC567DF2748FAAD002821AE /* FlashcardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC567DE2748FAAD002821AE /* FlashcardList.swift */; };
+		FFC567E12748FCE6002821AE /* EditFlashcardModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC567E02748FCE6002821AE /* EditFlashcardModal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		FB24131C27453D1B00E072C4 /* FlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
 		FF4A40542748009D0011C6B2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		FF4A4056274803A20011C6B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FFC567DE2748FAAD002821AE /* FlashcardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardList.swift; sourceTree = "<group>"; };
+		FFC567E02748FCE6002821AE /* EditFlashcardModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFlashcardModal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,12 +97,15 @@
 		8303F7C62747A17200582462 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FB24131C27453D1B00E072C4 /* FlashcardView.swift */,
 				836CF4842747BF8E004989AB /* Home.swift */,
 				836CF4852747BF8E004989AB /* ModalView.swift */,
 				8303F7DA2747A42000582462 /* DeckRow.swift */,
 				8303F7DC2747A42000582462 /* SessionCompleted.swift */,
 				8303F7DB2747A42000582462 /* TotalSuccess.swift */,
 				8303F7D92747A41100582462 /* AverageDuration.swift */,
+				FFC567DE2748FAAD002821AE /* FlashcardList.swift */,
+				FFC567E02748FCE6002821AE /* EditFlashcardModal.swift */,
 			);
 			name = View;
 			path = Flashdecks/View;
@@ -150,7 +157,6 @@
 				83CD2E1D273E80490093AD90 /* FlashdecksApp.swift */,
 				83CD2E21273E804B0093AD90 /* Assets.xcassets */,
 				83CD2E23273E804B0093AD90 /* Preview Content */,
-				FB24131C27453D1B00E072C4 /* FlashcardView.swift */,
 				FF4A40542748009D0011C6B2 /* Launch Screen.storyboard */,
 			);
 			path = Flashdecks;
@@ -314,9 +320,11 @@
 			files = (
 				FB24131D27453D1B00E072C4 /* FlashcardView.swift in Sources */,
 				837812CF2741127000A705D3 /* Db.swift in Sources */,
+				FFC567DF2748FAAD002821AE /* FlashcardList.swift in Sources */,
 				8303F7DF2747A7A200582462 /* TotalSuccess.swift in Sources */,
 				8303F7DE2747A7A200582462 /* SessionCompleted.swift in Sources */,
 				836CF4872747BF8E004989AB /* ModalView.swift in Sources */,
+				FFC567E12748FCE6002821AE /* EditFlashcardModal.swift in Sources */,
 				836CF4862747BF8E004989AB /* Home.swift in Sources */,
 				8303F7DD2747A79200582462 /* DeckRow.swift in Sources */,
 				83CD2E1E273E80490093AD90 /* FlashdecksApp.swift in Sources */,

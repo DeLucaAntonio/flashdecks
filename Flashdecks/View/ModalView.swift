@@ -20,7 +20,8 @@ extension UIApplication {
 
 struct ModalView: View {
     
-    @ObservedObject var useFlashdeck: UseFlashdecks
+    //@EnvironmentObject var useFlashdeck: UseFlashdecks
+    @StateObject var useFlashdecks = UseFlashdecks()
     
     @State var nameDeck: String = ""
     @State var descriptionDeck: String = ""
@@ -34,6 +35,9 @@ struct ModalView: View {
     @FocusState private var nameIsFocused: Bool
     
     var width: CGFloat
+    
+    //let deck: Flashdeck
+   
 
     var body: some View {
         
@@ -68,19 +72,22 @@ struct ModalView: View {
                                 if(nameDeck == "" || descriptionDeck == ""){
                                  //
                                 }else{
-                                    let result = useFlashdeck.createDeck(name: nameDeck, description: descriptionDeck)
+                                    let result = useFlashdecks.createDeck(name: nameDeck, description: descriptionDeck)
                                     
                                     if(result){
+                                        
                                         modalViewActive.toggle()
                                     }
                                 }
                                 
                             }
                         } label: {
+                          //  NavigationLink(destination: FlashcardList(), label:   {
                             Text("Create")
                                 .fontWeight(.semibold)
-                                
+                         //   })
                         }
+                        .environmentObject(useFlashdecks)
                         .disabled(isDefinitonPresented||isTermPresented)
                     }
                    
