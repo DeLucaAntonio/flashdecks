@@ -20,13 +20,14 @@ struct TotalDeck: View {
                     .fontWeight(.bold)
                     .font(.largeTitle)
                     .padding([.top, .leading], 10.0)
-                Spacer()
+                
+
             }
          
             
             
             visualDeck()
-        }
+        }.padding()
         
         
     }

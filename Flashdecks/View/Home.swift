@@ -68,12 +68,19 @@ struct Home: View {
                             .frame(width: 174, alignment: .topLeading)
                             .lineSpacing(28)
                         Spacer()
-                        Text("See All →")
-                            .fontWeight(.bold)
-                            .font(.callout)
-                            .multilineTextAlignment(.trailing)
-                            .frame(width: 174, alignment: .trailing)
-                            .lineSpacing(28)
+                        
+                        
+                        NavigationLink(destination: TotalDeck(), label:   {
+                            
+                            Text("See All →")
+                                .fontWeight(.bold)
+                                .font(.callout)
+                                .multilineTextAlignment(.trailing)
+                                .frame(width: 174, alignment: .trailing)
+                                .lineSpacing(28)
+                            
+                        })
+                   
                         
                         
                     }
