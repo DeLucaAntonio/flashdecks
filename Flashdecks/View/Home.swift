@@ -65,7 +65,7 @@ struct Home: View {
                             .font(.title2)
                             .frame(width: 174, alignment: .topLeading)
                             .lineSpacing(28)
-                        
+                        Spacer()
                         Text("See All →")
                             .fontWeight(.bold)
                             .font(.callout)
@@ -75,7 +75,7 @@ struct Home: View {
                         
                         
                     }
-                    .padding()
+                   .padding(.top,10)
                     
                     visualDeck()
                     
@@ -123,7 +123,7 @@ struct Home: View {
                                     } label: {
                                         Image(systemName: "plus.circle.fill")
                                             .resizable()
-                                            .frame(width: 30.0, height: 30.0)
+                                            .frame(width: 25.0, height: 25.0)
                                             
                                     })
             

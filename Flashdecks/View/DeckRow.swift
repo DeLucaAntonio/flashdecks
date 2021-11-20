@@ -14,10 +14,10 @@ struct DeckRow: View {
         
         ZStack(alignment: .leading){
             Rectangle()
-                .frame(width: 380, height: 110)
+                .frame(width: 380, height: 100)
                 .foregroundColor(Color(UIColor(named: "PrimaryViolet")!))
                 .cornerRadius(10)
-                .padding(.top,5)
+                .padding(.top,10)
             
             Text(deck.name)
                 .fontWeight(.semibold)
@@ -25,15 +25,18 @@ struct DeckRow: View {
                 .multilineTextAlignment(.leading)
             //.lineSpacing(24)
                 .foregroundColor(.white)
-                .padding(.leading,15)
-            Text("80%")
+                .padding(.leading,30)
+                .padding(.bottom,30)
+            
+            Text("10%")
                 .fontWeight(.heavy)
-                .font(.title)
+               // .font(.title)
                 .multilineTextAlignment(.leading)
             //.lineSpacing(24)
                 .foregroundColor(Color(UIColor(named: "percentageColor")!))
-                .padding(.top,65)
-            
+                .padding(.top,60)
+                .padding( .leading, 30.0)
+                .font(.system(size: 40))
         }
         
     }
