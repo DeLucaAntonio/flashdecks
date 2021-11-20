@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2067B8F827494CE2002B3FCF /* TotalDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2067B8F727494CE2002B3FCF /* TotalDeck.swift */; };
+		2067B8FA27494D31002B3FCF /* StatsFinalSucc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2067B8F927494D31002B3FCF /* StatsFinalSucc.swift */; };
 		8303F7DD2747A79200582462 /* DeckRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8303F7DA2747A42000582462 /* DeckRow.swift */; };
 		8303F7DE2747A7A200582462 /* SessionCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8303F7DC2747A42000582462 /* SessionCompleted.swift */; };
 		8303F7DF2747A7A200582462 /* TotalSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8303F7DB2747A42000582462 /* TotalSuccess.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2067B8F727494CE2002B3FCF /* TotalDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalDeck.swift; sourceTree = "<group>"; };
+		2067B8F927494D31002B3FCF /* StatsFinalSucc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsFinalSucc.swift; sourceTree = "<group>"; };
 		8303F7D92747A41100582462 /* AverageDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageDuration.swift; sourceTree = "<group>"; };
 		8303F7DA2747A42000582462 /* DeckRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRow.swift; sourceTree = "<group>"; };
 		8303F7DB2747A42000582462 /* TotalSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalSuccess.swift; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 				8303F7D92747A41100582462 /* AverageDuration.swift */,
 				FFC567DE2748FAAD002821AE /* FlashcardList.swift */,
 				FFC567E02748FCE6002821AE /* EditFlashcardModal.swift */,
+				2067B8F727494CE2002B3FCF /* TotalDeck.swift */,
+				2067B8F927494D31002B3FCF /* StatsFinalSucc.swift */,
 			);
 			name = View;
 			path = Flashdecks/View;
@@ -326,7 +332,9 @@
 				836CF4872747BF8E004989AB /* ModalView.swift in Sources */,
 				FFC567E12748FCE6002821AE /* EditFlashcardModal.swift in Sources */,
 				836CF4862747BF8E004989AB /* Home.swift in Sources */,
+				2067B8FA27494D31002B3FCF /* StatsFinalSucc.swift in Sources */,
 				8303F7DD2747A79200582462 /* DeckRow.swift in Sources */,
+				2067B8F827494CE2002B3FCF /* TotalDeck.swift in Sources */,
 				83CD2E1E273E80490093AD90 /* FlashdecksApp.swift in Sources */,
 				837812D32741151300A705D3 /* UseFlashdecks.swift in Sources */,
 				8303F7E02747A7A200582462 /* AverageDuration.swift in Sources */,
