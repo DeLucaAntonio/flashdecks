@@ -102,15 +102,15 @@
 			isa = PBXGroup;
 			children = (
 				836CF4842747BF8E004989AB /* Home.swift */,
+				836CF4852747BF8E004989AB /* ModalView.swift */,
 				2067B8F727494CE2002B3FCF /* TotalDeck.swift */,
 				FFC567DE2748FAAD002821AE /* FlashcardList.swift */,
-				FB24131C27453D1B00E072C4 /* FlashcardView.swift */,
-				836CF4852747BF8E004989AB /* ModalView.swift */,
+				FFC567E02748FCE6002821AE /* EditFlashcardModal.swift */,
 				8303F7DA2747A42000582462 /* DeckRow.swift */,
-				8303F7DC2747A42000582462 /* SessionCompleted.swift */,
 				8303F7DB2747A42000582462 /* TotalSuccess.swift */,
 				8303F7D92747A41100582462 /* AverageDuration.swift */,
-				FFC567E02748FCE6002821AE /* EditFlashcardModal.swift */,
+				8303F7DC2747A42000582462 /* SessionCompleted.swift */,
+				FB24131C27453D1B00E072C4 /* FlashcardView.swift */,
 				20C082862749503E00C8524F /* FinalStatsPage.swift */,
 			);
 			name = View;

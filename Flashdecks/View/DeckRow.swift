@@ -14,10 +14,11 @@ struct DeckRow: View {
         
         ZStack(alignment: .leading){
             Rectangle()
-                .frame(width: 380, height: 100)
+                .frame(width: 375, height: 100)
                 .foregroundColor(Color(UIColor(named: "PrimaryViolet")!))
-                .cornerRadius(10)
+                .cornerRadius(15)
                 .padding(.top,10)
+                .shadow(color: .gray, radius: 5, x: 3, y: 2)
             
             Text(deck.name)
                 .fontWeight(.semibold)

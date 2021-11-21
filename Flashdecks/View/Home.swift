@@ -79,7 +79,8 @@ struct Home: View {
                                 .frame(width: 174, alignment: .trailing)
                                 .lineSpacing(28)
                             
-                        })
+                        })            .isDetailLink(false)
+
                    
                         
                         

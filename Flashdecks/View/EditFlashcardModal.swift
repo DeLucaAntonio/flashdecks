@@ -16,17 +16,15 @@ struct EditFlashcardModal: View {
      
      @State var keywords: [String] = ["","",""]*/
     
-    //Roba del pattern MVVM
-/*    @ObservedObject var viewModel: FlashcardListViewModel
-    @State private var newFlashcard = Flashcard(
-        term: "", definition: "", keyword: ["","",""]
+
+    @State private var newCard = Flashcard(id: "1",
+        name: "",Keywords: ["","",""], definition: ""
     )
-    */
     
-    
-    @State var newCard = Flashcard(id: "", name: "",Keywords: [""], definition: "")
-    let useFlashdecks = UseFlashdecks()
-    
+//
+    @StateObject var useFlashdecks = UseFlashdecks()
+//
+//    @State var newCard : Flashcard
     
     //VAR BINDING PER IL BOTTONE CANCEL
     @Binding var isModalPresented: Bool
@@ -78,7 +76,7 @@ struct EditFlashcardModal: View {
                         
                         
                     })
-                /*
+                
                 Divider()
                 Text("Keywords")
                     .fontWeight(.bold)
@@ -86,27 +84,27 @@ struct EditFlashcardModal: View {
                 VStack{
                     TextField(
                         "Optional",
-                        text: $newFlashcard.keyword[0]
+                        text: $newCard.Keywords[0]
                     )
                     Divider()
                     
                     TextField(
                         "Optional",
-                        text: $newFlashcard.keyword[1]
+                        text: $newCard.Keywords[1]
                     )
                     Divider()
                     TextField(
                         "Optional",
-                        text: $newFlashcard.keyword[2]
+                        text: $newCard.Keywords[2]
                     )
                     Divider()
                 }
                 Spacer()
-                 */
+                 
             }.padding()
                 .navigationBarItems(trailing: Button("Save",action: {
                   //ON CLICK SAVE ADDA LA NUOVA FLASHCARD
-                   // useFlashdecks.createCard(newFlashcard: newCard, deckId: "01")
+                    useFlashdecks.createCard(newFlashcard: newCard, deckId: newCard.id)
                     isModalPresented.toggle()
                     
                 }) .disabled(isDefinitonPresented||isTermPresented) //Il save è disabilitato finchè non diventano entrambi veri

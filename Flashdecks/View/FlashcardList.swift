@@ -26,14 +26,27 @@ struct FlashcardList: View {
     //@StateObject var useFlashdecks = UseFlashdecks()
   //  let deck: Flashdeck
     
-    @EnvironmentObject var useFlashdeck: UseFlashdecks
+    //VAR PER L'ALLERT
+    @State var showingAlert : Bool = false
+    
+    //VAR PRESE DALLA VIEW TOTAL DECK
+    @State var name : String
+    @State var description:String
+    
+    //VAR PER TORNARE ALLA ROOT ON DELETE
+    @Environment(\.presentationMode) var presentationMode
+    
+    //ENVIRONMENT
+    @EnvironmentObject var useFlashdecks: UseFlashdecks
+    
+    @State var card : [Flashcard]
+    
     
     var body: some View {
         
         VStack{
-            Text("deck.name")
             //TITLE AND DESCRIPTION OF THE DECK
-            Text("deck.description")
+            Text(description)
                 .fontWeight(.regular)
                 .multilineTextAlignment(.leading)
             
@@ -57,8 +70,9 @@ struct FlashcardList: View {
                 
                 
                 //STAMPA TUTTE LE FLASHCARD
-                /*   LazyVGrid(columns: columns, spacing: 10,content: {
-                        ForEach(deck.flashcards){index,flashcards in
+              
+            /*    LazyVGrid(columns: columns, spacing: 10,content: {
+                    ForEach((0...1), id: \.self){index in  //COME FACCIO A CAPIRE QUANTE CARTE HO
                            
                         ZStack{
                             Rectangle()
@@ -66,7 +80,7 @@ struct FlashcardList: View {
                                 .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
                                 .foregroundColor(Color(UIColor(named: "PrimaryViolet")!))
                                 .shadow(color:.gray.opacity(0.5),radius: 5,x:0,y:4)
-                            Text(deck.flashcards[index].name)
+                            Text(card[index].name) //VA OUT OF RANGE
                                 .font(.system(size: 26))
                                 .fontWeight(.semibold)
                                 .foregroundColor(.white)
@@ -83,16 +97,30 @@ struct FlashcardList: View {
                               
             
             
-        }
+        }.navigationTitle(name)
+            
         
         // PROPRIETIES OF NAVIGATION
         //.navigationTitle("Calculus 1")
         .toolbar{
-            Button("Edit"){
-                //AZIONE
+            Button("Delete deck"){
+                showingAlert=true
+            }.alert(isPresented:$showingAlert) {
+                Alert(
+                    title: Text("Are you sure you want to delete this deck?"),
+                    message: Text("There is no undo"),
+                    primaryButton: .destructive(Text("Delete")) {
+                      
+                        //torna alla view di prima on delete
+                        self.presentationMode.wrappedValue.dismiss()
+                        print("Deleting...")
+                       
+                    },
+                    secondaryButton: .cancel()
+                )
             }
-        }.environmentObject(useFlashdeck)
-        .sheet(isPresented: $isPresentingAddModel,content:{EditFlashcardModal(isModalPresented: self.$isPresentingAddModel)})
+        }.environmentObject(useFlashdecks)
+            .sheet(isPresented: $isPresentingAddModel,content:{EditFlashcardModal(isModalPresented: self.$isPresentingAddModel )})
     }
     
 }

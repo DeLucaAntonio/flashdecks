@@ -20,8 +20,8 @@ extension UIApplication {
 
 struct ModalView: View {
     
-    //@EnvironmentObject var useFlashdeck: UseFlashdecks
-    @StateObject var useFlashdecks = UseFlashdecks()
+    @EnvironmentObject var useFlashdecks: UseFlashdecks
+  //  @StateObject var useFlashdecks = UseFlashdecks()
     
     @State var nameDeck: String = ""
     @State var descriptionDeck: String = ""

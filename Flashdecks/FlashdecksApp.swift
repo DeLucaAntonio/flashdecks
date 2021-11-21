@@ -9,10 +9,11 @@ import SwiftUI
 
 @main
 struct FlashdecksApp: App {
+    @StateObject var useFlashdecks = UseFlashdecks()
     var body: some Scene {
         WindowGroup {
-            FinalStatsPage().environment(\.colorScheme,.light)
-                .environmentObject(UseFlashdecks())
+            Home().environment(\.colorScheme,.light)
+                .environmentObject(useFlashdecks)
 
         }
     }
