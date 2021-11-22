@@ -33,8 +33,9 @@ struct EditFlashcardModal: View {
     @State private var isTermPresented = true
     @State private var isDefinitonPresented = true
     
-    //PROVA CON I DATI VERI
-   // @ObservedObject var useFlashdeck: UseFlashdecks
+    @State var deckId : String
+    
+    
     
     var body: some View {
         NavigationView{
@@ -104,7 +105,8 @@ struct EditFlashcardModal: View {
             }.padding()
                 .navigationBarItems(trailing: Button("Save",action: {
                   //ON CLICK SAVE ADDA LA NUOVA FLASHCARD
-                    useFlashdecks.createCard(newFlashcard: newCard, deckId: newCard.id)
+                    let result = useFlashdecks.createCard(newFlashcard: newCard, deckId: deckId)
+                    print(result)
                     isModalPresented.toggle()
                     
                 }) .disabled(isDefinitonPresented||isTermPresented) //Il save è disabilitato finchè non diventano entrambi veri

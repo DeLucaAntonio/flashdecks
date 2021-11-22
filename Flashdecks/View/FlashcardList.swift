@@ -117,7 +117,7 @@ struct FlashcardList: View {
                     )
                 }
             }.environmentObject(useFlashdecks)
-            .sheet(isPresented: $isPresentingAddModel,content:{EditFlashcardModal(isModalPresented: self.$isPresentingAddModel )})
+            .sheet(isPresented: $isPresentingAddModel,content:{EditFlashcardModal(isModalPresented: self.$isPresentingAddModel ,deckId: deck.id)})
     }
     
 }
