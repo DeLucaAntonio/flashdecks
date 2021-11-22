@@ -7,18 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		837812CC274110DA00A705D3 /* db.json in Resources */ = {isa = PBXBuildFile; fileRef = 837812CB274110DA00A705D3 /* db.json */; };
+		2067B8F827494CE2002B3FCF /* TotalDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2067B8F727494CE2002B3FCF /* TotalDeck.swift */; };
+		20C082872749503E00C8524F /* FinalStatsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C082862749503E00C8524F /* FinalStatsPage.swift */; };
+		8303F7DD2747A79200582462 /* DeckRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8303F7DA2747A42000582462 /* DeckRow.swift */; };
+		8303F7DE2747A7A200582462 /* SessionCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8303F7DC2747A42000582462 /* SessionCompleted.swift */; };
+		8303F7DF2747A7A200582462 /* TotalSuccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8303F7DB2747A42000582462 /* TotalSuccess.swift */; };
+		8303F7E02747A7A200582462 /* AverageDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8303F7D92747A41100582462 /* AverageDuration.swift */; };
+		836CF4862747BF8E004989AB /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836CF4842747BF8E004989AB /* Home.swift */; };
+		836CF4872747BF8E004989AB /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836CF4852747BF8E004989AB /* ModalView.swift */; };
 		837812CF2741127000A705D3 /* Db.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837812CE2741127000A705D3 /* Db.swift */; };
 		837812D32741151300A705D3 /* UseFlashdecks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837812D22741151300A705D3 /* UseFlashdecks.swift */; };
 		83CD2E1E273E80490093AD90 /* FlashdecksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CD2E1D273E80490093AD90 /* FlashdecksApp.swift */; };
-		83CD2E20273E80490093AD90 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CD2E1F273E80490093AD90 /* ContentView.swift */; };
 		83CD2E22273E804B0093AD90 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83CD2E21273E804B0093AD90 /* Assets.xcassets */; };
 		83CD2E25273E804B0093AD90 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83CD2E24273E804B0093AD90 /* Preview Assets.xcassets */; };
 		83CD2E2F273E804B0093AD90 /* FlashdecksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CD2E2E273E804B0093AD90 /* FlashdecksTests.swift */; };
 		83CD2E39273E804B0093AD90 /* FlashdecksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CD2E38273E804B0093AD90 /* FlashdecksUITests.swift */; };
 		83CD2E3B273E804B0093AD90 /* FlashdecksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CD2E3A273E804B0093AD90 /* FlashdecksUITestsLaunchTests.swift */; };
-		FB24131F2747ABEA00E072C4 /* GameStartScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24131E2747ABEA00E072C4 /* GameStartScreenView.swift */; };
-		FB2413252747E76D00E072C4 /* SnapCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2413242747E76D00E072C4 /* SnapCarousel.swift */; };
+		83FAF8A5274AA6220058908C /* UseStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FAF8A4274AA6220058908C /* UseStatistics.swift */; };
+		83FAF8A7274AA95A0058908C /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FAF8A6274AA95A0058908C /* Statistics.swift */; };
+		FB24131D27453D1B00E072C4 /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24131C27453D1B00E072C4 /* FlashcardView.swift */; };
+		FF4A40552748009D0011C6B2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4A40542748009D0011C6B2 /* Launch Screen.storyboard */; };
+		FFC567DF2748FAAD002821AE /* FlashcardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC567DE2748FAAD002821AE /* FlashcardList.swift */; };
+		FFC567E12748FCE6002821AE /* EditFlashcardModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC567E02748FCE6002821AE /* EditFlashcardModal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,12 +49,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		837812CB274110DA00A705D3 /* db.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = db.json; sourceTree = "<group>"; };
+		2067B8F727494CE2002B3FCF /* TotalDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalDeck.swift; sourceTree = "<group>"; };
+		20C082862749503E00C8524F /* FinalStatsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalStatsPage.swift; sourceTree = "<group>"; };
+		8303F7D92747A41100582462 /* AverageDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageDuration.swift; sourceTree = "<group>"; };
+		8303F7DA2747A42000582462 /* DeckRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckRow.swift; sourceTree = "<group>"; };
+		8303F7DB2747A42000582462 /* TotalSuccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalSuccess.swift; sourceTree = "<group>"; };
+		8303F7DC2747A42000582462 /* SessionCompleted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCompleted.swift; sourceTree = "<group>"; };
+		836CF4842747BF8E004989AB /* Home.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		836CF4852747BF8E004989AB /* ModalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		837812CE2741127000A705D3 /* Db.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Db.swift; sourceTree = "<group>"; };
 		837812D22741151300A705D3 /* UseFlashdecks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseFlashdecks.swift; sourceTree = "<group>"; };
 		83CD2E1A273E80490093AD90 /* Flashdecks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashdecks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83CD2E1D273E80490093AD90 /* FlashdecksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashdecksApp.swift; sourceTree = "<group>"; };
-		83CD2E1F273E80490093AD90 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		83CD2E21273E804B0093AD90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83CD2E24273E804B0093AD90 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		83CD2E2A273E804B0093AD90 /* FlashdecksTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashdecksTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,8 +68,13 @@
 		83CD2E34273E804B0093AD90 /* FlashdecksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashdecksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83CD2E38273E804B0093AD90 /* FlashdecksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashdecksUITests.swift; sourceTree = "<group>"; };
 		83CD2E3A273E804B0093AD90 /* FlashdecksUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashdecksUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		FB24131E2747ABEA00E072C4 /* GameStartScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartScreenView.swift; sourceTree = "<group>"; };
-		FB2413242747E76D00E072C4 /* SnapCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCarousel.swift; sourceTree = "<group>"; };
+		83FAF8A4274AA6220058908C /* UseStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseStatistics.swift; sourceTree = "<group>"; };
+		83FAF8A6274AA95A0058908C /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		FB24131C27453D1B00E072C4 /* FlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
+		FF4A40542748009D0011C6B2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		FF4A4056274803A20011C6B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FFC567DE2748FAAD002821AE /* FlashcardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardList.swift; sourceTree = "<group>"; };
+		FFC567E02748FCE6002821AE /* EditFlashcardModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditFlashcardModal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,18 +102,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		837812C82741106200A705D3 /* db */ = {
+		8303F7C62747A17200582462 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				837812D42741156900A705D3 /* data */,
+				836CF4842747BF8E004989AB /* Home.swift */,
+				836CF4852747BF8E004989AB /* ModalView.swift */,
+				2067B8F727494CE2002B3FCF /* TotalDeck.swift */,
+				FFC567DE2748FAAD002821AE /* FlashcardList.swift */,
+				FFC567E02748FCE6002821AE /* EditFlashcardModal.swift */,
+				8303F7DA2747A42000582462 /* DeckRow.swift */,
+				8303F7DB2747A42000582462 /* TotalSuccess.swift */,
+				8303F7D92747A41100582462 /* AverageDuration.swift */,
+				8303F7DC2747A42000582462 /* SessionCompleted.swift */,
+				FB24131C27453D1B00E072C4 /* FlashcardView.swift */,
+				20C082862749503E00C8524F /* FinalStatsPage.swift */,
 			);
-			path = db;
-			sourceTree = "<group>";
+			name = View;
+			path = Flashdecks/View;
+			sourceTree = SOURCE_ROOT;
 		};
 		837812D0274114B000A705D3 /* models */ = {
 			isa = PBXGroup;
 			children = (
 				837812CE2741127000A705D3 /* Db.swift */,
+				83FAF8A6274AA95A0058908C /* Statistics.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -101,24 +134,9 @@
 			isa = PBXGroup;
 			children = (
 				837812D22741151300A705D3 /* UseFlashdecks.swift */,
+				83FAF8A4274AA6220058908C /* UseStatistics.swift */,
 			);
 			path = hooks;
-			sourceTree = "<group>";
-		};
-		837812D42741156900A705D3 /* data */ = {
-			isa = PBXGroup;
-			children = (
-				837812D5274115C100A705D3 /* flashdecks */,
-				837812CB274110DA00A705D3 /* db.json */,
-			);
-			path = data;
-			sourceTree = "<group>";
-		};
-		837812D5274115C100A705D3 /* flashdecks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = flashdecks;
 			sourceTree = "<group>";
 		};
 		83CD2E11273E80490093AD90 = {
@@ -144,15 +162,14 @@
 		83CD2E1C273E80490093AD90 /* Flashdecks */ = {
 			isa = PBXGroup;
 			children = (
-				FB24131E2747ABEA00E072C4 /* GameStartScreenView.swift */,
+				FF4A4056274803A20011C6B2 /* Info.plist */,
+				8303F7C62747A17200582462 /* View */,
 				837812D0274114B000A705D3 /* models */,
 				837812D1274114FD00A705D3 /* hooks */,
-				837812C82741106200A705D3 /* db */,
 				83CD2E1D273E80490093AD90 /* FlashdecksApp.swift */,
-				83CD2E1F273E80490093AD90 /* ContentView.swift */,
 				83CD2E21273E804B0093AD90 /* Assets.xcassets */,
 				83CD2E23273E804B0093AD90 /* Preview Content */,
-				FB2413242747E76D00E072C4 /* SnapCarousel.swift */,
+				FF4A40542748009D0011C6B2 /* Launch Screen.storyboard */,
 			);
 			path = Flashdecks;
 			sourceTree = "<group>";
@@ -286,7 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				837812CC274110DA00A705D3 /* db.json in Resources */,
+				FF4A40552748009D0011C6B2 /* Launch Screen.storyboard in Resources */,
 				83CD2E25273E804B0093AD90 /* Preview Assets.xcassets in Resources */,
 				83CD2E22273E804B0093AD90 /* Assets.xcassets in Resources */,
 			);
@@ -313,12 +330,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83CD2E20273E80490093AD90 /* ContentView.swift in Sources */,
-				FB2413252747E76D00E072C4 /* SnapCarousel.swift in Sources */,
+				20C082872749503E00C8524F /* FinalStatsPage.swift in Sources */,
+				FB24131D27453D1B00E072C4 /* FlashcardView.swift in Sources */,
 				837812CF2741127000A705D3 /* Db.swift in Sources */,
+				FFC567DF2748FAAD002821AE /* FlashcardList.swift in Sources */,
+				8303F7DF2747A7A200582462 /* TotalSuccess.swift in Sources */,
+				8303F7DE2747A7A200582462 /* SessionCompleted.swift in Sources */,
+				83FAF8A7274AA95A0058908C /* Statistics.swift in Sources */,
+				836CF4872747BF8E004989AB /* ModalView.swift in Sources */,
+				FFC567E12748FCE6002821AE /* EditFlashcardModal.swift in Sources */,
+				836CF4862747BF8E004989AB /* Home.swift in Sources */,
+				8303F7DD2747A79200582462 /* DeckRow.swift in Sources */,
+				2067B8F827494CE2002B3FCF /* TotalDeck.swift in Sources */,
 				83CD2E1E273E80490093AD90 /* FlashdecksApp.swift in Sources */,
 				837812D32741151300A705D3 /* UseFlashdecks.swift in Sources */,
-				FB24131F2747ABEA00E072C4 /* GameStartScreenView.swift in Sources */,
+				83FAF8A5274AA6220058908C /* UseStatistics.swift in Sources */,
+				8303F7E02747A7A200582462 /* AverageDuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,12 +506,15 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Flashdecks/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 55H4ABU399;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Flashdecks/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -492,11 +522,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Singularity.Flashdecks;
+				PRODUCT_BUNDLE_IDENTIFIER = "Singularity.Flashdecks-you";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -505,15 +535,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Flashdecks/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Flashdecks/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -523,9 +556,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Singularity.Flashdecks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
