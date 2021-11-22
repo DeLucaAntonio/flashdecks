@@ -12,7 +12,7 @@ struct FlashdecksApp: App {
     @StateObject var useFlashdecks = UseFlashdecks()
     var body: some Scene {
         WindowGroup {
-            Home().environment(\.colorScheme,.light)
+            FinalStatsPage().environment(\.colorScheme,.light)
                 .environmentObject(useFlashdecks)
 
         }

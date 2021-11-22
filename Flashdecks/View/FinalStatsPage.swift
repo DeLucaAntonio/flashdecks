@@ -52,13 +52,20 @@ struct FinalStatsPage: View {
                             .fill(Color(red: 0.38, green: 0.38, blue: 0.85))
                             .frame(width: 134, height: 63)
                         
-                        Text("20% \nWrong")
+                        Text("20%")
                             .fontWeight(.medium)
                             .font(.title3)
                             .frame(width: 105, alignment: .topLeading)
                             .lineSpacing(24)
+                            .padding(.bottom,20)
                             .foregroundColor(.white)
-                        
+                        Text("Wrong")
+                            .fontWeight(.medium)
+                            .font(.title3)
+                            .frame( alignment: .topLeading)
+                            .lineSpacing(24)
+                            .padding([.leading, .bottom], -50.0)
+                            .foregroundColor(.white)
                         
                     }
                     
@@ -66,12 +73,13 @@ struct FinalStatsPage: View {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color(red: 0.38, green: 0.38, blue: 0.85))
                             .frame(width: 134, height: 63)
-                        Text("20%")
+                        Text("40%")
                             .fontWeight(.medium)
                             .font(.title3)
-                            .frame( alignment: .topLeading)
+                           // .frame( alignment: .topLeading)
                             .lineSpacing(24)
-                            .padding([.top, .leading], -20.0)
+                            .padding(.trailing, 80.0)
+                            .padding(.bottom,20)
                             .foregroundColor(.white)
                         Text("Skipped")
                             .fontWeight(.medium)
@@ -112,13 +120,14 @@ struct FinalStatsPage: View {
                                 .cornerRadius(/*@START_MENU_TOKEN@*/10.0/*@END_MENU_TOKEN@*/)
                                 .foregroundColor(.white)
                                 .frame(width: 155, height: 55)
-                                .shadow(color: .black, radius: 10, y: 5)
+                                .shadow(color: .gray, radius: 8,x:5, y: 3)
                             
                             
                             
                             Text("Play Again ")
                                 .fontWeight(.bold)
                                 .foregroundColor(Color(UIColor(named: "PrimaryViolet")!))
+                                
                         }
                         
                     }
