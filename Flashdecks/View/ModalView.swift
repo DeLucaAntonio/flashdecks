@@ -20,8 +20,7 @@ extension UIApplication {
 
 struct ModalView: View {
     
-    @EnvironmentObject var useFlashdecks: UseFlashdecks
-  //  @StateObject var useFlashdecks = UseFlashdecks()
+    @ObservedObject var useFlashdecks: UseFlashdecks
     
     @State var nameDeck: String = ""
     @State var descriptionDeck: String = ""
@@ -87,7 +86,6 @@ struct ModalView: View {
                                 .fontWeight(.semibold)
                          //   })
                         }
-                        .environmentObject(useFlashdecks)
                         .disabled(isDefinitonPresented||isTermPresented)
                     }
                    

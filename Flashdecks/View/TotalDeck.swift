@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TotalDeck: View {
-    @StateObject var useFlashdecks = UseFlashdecks()
+    let useFlashdecks: UseFlashdecks
     
     @State var selectedDeck : Flashdeck? = nil
     //VAR PER IL REDIRECT DOPO IL DELETE DEL DECK
@@ -45,7 +45,7 @@ struct TotalDeck: View {
             VStack {
                 if selectedDeck != nil {
                     NavigationLink(
-                        destination: FlashcardList(deck:selectedDeck!),
+                        destination: FlashcardList(useFlashdecks: useFlashdecks, deck:selectedDeck!),
                         isActive: self.$isActive)
                     { }
                     .isDetailLink(false)
@@ -83,6 +83,6 @@ struct TotalDeck: View {
 
 struct TotalDeck_Previews: PreviewProvider {
     static var previews: some View {
-        TotalDeck()
+        TotalDeck(useFlashdecks: UseFlashdecks())
     }
 }

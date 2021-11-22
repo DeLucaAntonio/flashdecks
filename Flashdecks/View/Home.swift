@@ -10,9 +10,7 @@ import SwiftUI
 
 struct Home: View {
     
-    //@StateObject var useFlashdecks = UseFlashdecks()
-    
-    @EnvironmentObject var useFlashdecks: UseFlashdecks
+    @StateObject var useFlashdecks = UseFlashdecks()
     
     @State var ore: String = "1"
     @State var minuti: String = "30"
@@ -70,7 +68,7 @@ struct Home: View {
                         Spacer()
                         
                         
-                        NavigationLink(destination: TotalDeck(), label:   {
+                        NavigationLink(destination: TotalDeck(useFlashdecks: useFlashdecks), label:   {
                             
                             Text("See All →")
                                 .fontWeight(.bold)
@@ -98,7 +96,7 @@ struct Home: View {
                 
                 if modalViewActive {
                     ZStack {
-                        ModalView(modalViewActive: $modalViewActive, width: bounds.size.width )
+                        ModalView(useFlashdecks: useFlashdecks, modalViewActive: $modalViewActive, width: bounds.size.width )
                     }
                     .animation(.easeInOut)
                     .transition(.move(edge: .bottom))

@@ -207,12 +207,14 @@ public class UseFlashdecks: ObservableObject {
         var cardToSave = newFlashcard
         
         if flashdecks.contains(deckId){
-            for var deck in deckList {
+            for (index, var deck) in deckList.enumerated() {
                 if (deck.id == deckId) {
                     do {
                         // We are adding our card to the deck object
                         cardToSave.id = String(cardId)
                         deck.flashcards.append(newFlashcard)
+                        
+                        deckList[index] = deck
                         
                         // We remove the deck
                         try FileManager.default.removeItem(at: URL(string: "\(decksCardsFolderUrl!.absoluteString)\(deckId).json")!)
@@ -220,13 +222,13 @@ public class UseFlashdecks: ObservableObject {
                         // We write the new deck
                         let updatedDeck = try JSONEncoder().encode(deck)
                         try updatedDeck.write(to: URL(string: "\(decksCardsFolderUrl!.absoluteString)\(deckId).json")!)
-                        
                         return true
                     } catch {
                         print(error)
                         return false
                     }
                 }
+
             }
         }
         return false

@@ -12,7 +12,6 @@ struct FlashcardList: View {
     
     // @StateObject private var viewModel = FlashcardListViewModel()
     
-    
     //Var per capire se attivare la modal
     @State var isPresentingAddModel = false
     
@@ -28,15 +27,15 @@ struct FlashcardList: View {
     
     //VAR PRESE DALLA VIEW TOTAL DECK
     //@State var name : String
-  //  @State var description:String
+    //  @State var description:String
     
     //VAR PER TORNARE ALLA ROOT ON DELETE
     @Environment(\.presentationMode) var presentationMode
     
     //ENVIRONMENT
-    @EnvironmentObject var useFlashdecks: UseFlashdecks
+    @ObservedObject var useFlashdecks: UseFlashdecks
     
-    @State var deck: Flashdeck
+    let deck: Flashdeck
     
     
     var body: some View {
@@ -110,14 +109,15 @@ struct FlashcardList: View {
                             
                             //torna alla view di prima on delete
                             self.presentationMode.wrappedValue.dismiss()
-                            print("Deleting...")
+                            let result = useFlashdecks.deleteDeck(deckToDelete: deck)
+                            print("Deleting: \(result)")
                             
                         },
                         secondaryButton: .cancel()
                     )
                 }
             }.environmentObject(useFlashdecks)
-            .sheet(isPresented: $isPresentingAddModel,content:{EditFlashcardModal(isModalPresented: self.$isPresentingAddModel ,deckId: deck.id)})
+            .sheet(isPresented: $isPresentingAddModel,content:{EditFlashcardModal(useFlashdecks: useFlashdecks, isModalPresented: self.$isPresentingAddModel ,deckId: deck.id)})
     }
     
 }

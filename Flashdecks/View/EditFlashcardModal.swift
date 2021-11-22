@@ -22,7 +22,7 @@ struct EditFlashcardModal: View {
     )
     
 //
-    @StateObject var useFlashdecks = UseFlashdecks()
+    @ObservedObject var useFlashdecks: UseFlashdecks
 //
 //    @State var newCard : Flashcard
     
@@ -32,10 +32,7 @@ struct EditFlashcardModal: View {
     //Var booleane per il controllo del riempimento dei campi termine e descrizione
     @State private var isTermPresented = true
     @State private var isDefinitonPresented = true
-    
     @State var deckId : String
-    
-    
     
     var body: some View {
         NavigationView{
