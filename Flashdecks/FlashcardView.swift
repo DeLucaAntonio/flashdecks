@@ -7,22 +7,6 @@
 
 import SwiftUI
 
-var flip = FlipIcon()
-
-
-struct FlipIcon: View{
-    @State var touched: Bool = false
-    
-    var body: some View{
-        
-          Image(systemName: "goforward").imageScale(.large)
-            .foregroundStyle(.white).onTapGesture {
-                touched = true
-            }
-        
-    }
-}
-
 
 
 
@@ -42,83 +26,47 @@ struct ProgressBar: View {
 
 
 
-struct FlashcardDisplay<Front, Back>: View where Front: View, Back: View {
-    var front: () -> Front
-    var back: () -> Back
-    
-    
-    @State var flipped: Bool = false
-    
-    @State var flashcardRotation = 0.0
-    @State var contentRotation = 0.0
-    
-    init(@ViewBuilder front: @escaping () -> Front, @ViewBuilder back: @escaping () -> Back) {
-        self.front = front
-        self.back = back
-    }
-    
-    var body: some View {
-        ZStack {
-            if flipped {
-                back()
-            
-            } else {
-                front()
-                
-            }
-        }
-        .rotation3DEffect(.degrees(contentRotation), axis: (x: 0, y: 1, z: 0))
-        .padding()
-        .frame(height: 470)
-        .frame(maxWidth: 330)
-        .background(RoundedRectangle(cornerRadius: 25)
-                    .fill(Color(#colorLiteral(red: 0.5411764979362488, green: 0.5333333611488342, blue: 0.886274516582489, alpha: 1))))
-        
-        
-        .padding()
-        
-        .onTapGesture {
-            flipFlashcard()
-            
-        }
-        .rotation3DEffect(.degrees(flashcardRotation), axis: (x: 0, y: 1, z: 0))
-    }
-    
-    func flipFlashcard() {
-        let animationTime = 0.5
-        withAnimation(Animation.linear(duration: animationTime)) {
-            flashcardRotation += 180
-        }
-        
-        withAnimation(Animation.linear(duration: 0.001).delay(animationTime / 2)) {
-            contentRotation += 180
-            flipped.toggle()
-        }
-    }
-}
+
 
 struct FlashcardView: View {
     
     @State var progressValue: Float = 0.0
-    @State var cardList: [Flashcard] = [Flashcard(id: "020", name: "Object", Keywords: ["class", "method", "instance"], definition: "le classi sono molto belle"), Flashcard(id: "030", name: "Bestemmioni", Keywords: ["KTM", "KTM+", "KTM++"], definition: "le classi sono molto belle")]
-   
+    @State var cardList: [Flashcard] = [Flashcard(id: "020", name: "Object", Keywords: ["class", "method", "instance"], definition: "le classi sono molto belle"), Flashcard(id: "030", name: "Bestemmioni", Keywords: ["KTM", "KTM+", "KTM++"], definition: "le classi sono molto belle"), Flashcard(id: "020", name: "Object", Keywords: ["class", "method", "instance"], definition: "le classi sono molto belle")]
     
+    @State var hours: Int = 0
+    @State var minutes: Int = 0
+    @State var seconds: Int = 0
+    @State var timerIsPaused: Bool = true
+    @State var touched: Bool = false
+    
+      
+    @State var timer: Timer? = nil
     
     var body: some View {
-        /*let flipIcon = Image(systemName: "goforward").imageScale(.large)
-            .foregroundStyle(.white)*/
+        
         
         NavigationView{
-            
             
             
             VStack{
                 ProgressBar(value: $progressValue).frame(width: 330,height: 20)
                 
+                
                 HStack(spacing:190){
                     Text("5/10").font(.system(size: 18, weight: .regular))
                     
-                    Text("􀐱").font(.system(size: 18, weight: .regular)).foregroundColor(Color(#colorLiteral(red: 0.56, green: 0.55, blue: 1, alpha: 1))).tracking(0.35) + Text(" 02:30 s").font(.system(size: 18, weight: .regular)).tracking(0.35)
+                    HStack {
+                    //image 1
+                        Image(systemName: "timer")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 16, height: 16)
+                        .foregroundColor(Color(#colorLiteral(red: 0.56, green: 0.55, blue: 1, alpha: 1)))
+                        .font(Font.title.weight(.semibold))
+                        
+                    //03:20 s
+                        Text("\(hours):\(minutes):\(seconds)").font(.system(size: 18, weight: .regular)).tracking(0.35)
+                    }
                     
                 }.frame(height: 40)
                 
@@ -130,7 +78,6 @@ struct FlashcardView: View {
                         Spacer()
                         
                         ForEach(cardList, id: \.id){ card in
-                            
                             
                             
                             FlashcardDisplay(front: {
@@ -168,13 +115,16 @@ struct FlashcardView: View {
                                     HStack{
                                         Spacer()
                                         ZStack{
-                                            flip
+                                            Image(systemName: "goforward").imageScale(.large)
+                                              .foregroundStyle(.white).onTapGesture {
+                                                  touched = true
+                                              }
                                         }
                                         
                                     }
                                     
                                     
-                                    }
+                                 }
                                 
                                 }, back: {
                                     ZStack {
@@ -222,12 +172,109 @@ struct FlashcardView: View {
                 Spacer()
                
                     
-                }.navigationBarTitle("hello")
-                .navigationBarTitleDisplayMode(.inline)
+            }.navigationBarTitle("hello")
+            .navigationBarTitleDisplayMode(.inline)
+            
+            .toolbar{
+                Button("Done") {
+                    print("Help tapped!")
+                }
+            }
                 
                 
+                
+        }.onAppear {
+            self.startTimer()
+        }
+    }
+    
+    struct FlashcardDisplay<Front, Back>: View where Front: View, Back: View {
+        var front: () -> Front
+        var back: () -> Back
+        
+        
+        @State var flipped: Bool = false
+        @State var flashcardRotation = 0.0
+        @State var contentRotation = 0.0
+        //@State var isSelected : Bool 
+        
+        init(@ViewBuilder front: @escaping () -> Front, @ViewBuilder back: @escaping () -> Back) {
+            self.front = front
+            self.back = back
+            
+        }
+        
+        var body: some View {
+            
+            ZStack {
+                if flipped {
+                    
+                    back()
+                    
+                
+                } else {
+                    front()
+                    
+                }
+            }
+            .rotation3DEffect(.degrees(contentRotation), axis: (x: 0, y: 1, z: 0))
+            .padding()
+            .frame(height: 470)
+            .frame(maxWidth: 330)
+            .background(RoundedRectangle(cornerRadius: 25)
+                        .fill(Color(#colorLiteral(red: 0.5411764979362488, green: 0.5333333611488342, blue: 0.886274516582489, alpha: 1))))
+            
+            .padding()
+            
+            .onTapGesture {
+                flipFlashcard()
+                
+                //touched.toggle()
+                //touched
+            }
+            .rotation3DEffect(.degrees(flashcardRotation), axis: (x: 0, y: 1, z: 0))
+            .cornerRadius( 8 )
+            .shadow( color: Color( "shadow1" ), radius: 4, x: 0, y: 4 )
+            .transition( AnyTransition.slide )
+            .animation( .spring() )
+        }
+        
+        
+        func flipFlashcard() {
+            let animationTime = 0.5
+            withAnimation(Animation.linear(duration: animationTime)) {
+                flashcardRotation += 180
+            }
+            
+            withAnimation(Animation.linear(duration: 0.001).delay(animationTime / 2)) {
+                contentRotation += 180
+                flipped.toggle()
             }
         }
+    }
+    
+    func startTimer(){
+        timerIsPaused = false
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ tempTimer in
+          if self.seconds == 59 {
+            self.seconds = 0
+            if self.minutes == 59 {
+              self.minutes = 0
+              self.hours = self.hours + 1
+            } else {
+              self.minutes = self.minutes + 1
+            }
+          } else {
+            self.seconds = self.seconds + 1
+          }
+        }
+      }
+      
+      func stopTimer(){
+        timerIsPaused = true
+        timer?.invalidate()
+        timer = nil
+      }
         
     }
 
@@ -238,3 +285,4 @@ struct FlashcardView_Previews: PreviewProvider {
         
     }
 }
+
