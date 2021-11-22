@@ -116,7 +116,7 @@ struct FlashcardList: View {
                         secondaryButton: .cancel()
                     )
                 }
-            }.environmentObject(useFlashdecks)
+            }
             .sheet(isPresented: $isPresentingAddModel,content:{EditFlashcardModal(useFlashdecks: useFlashdecks, isModalPresented: self.$isPresentingAddModel ,deckId: deck.id)})
     }
     

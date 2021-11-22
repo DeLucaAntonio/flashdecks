@@ -14,6 +14,11 @@ struct TotalDeck: View {
     //VAR PER IL REDIRECT DOPO IL DELETE DEL DECK
     @State var isActive : Bool = false
     
+    //Long press var
+    @State var longPressed: Bool = false
+    @State var isActiveLong: Bool = false
+    @State var diocane : Bool = false
+    
     var body: some View {
         
         VStack(alignment: .leading){
@@ -43,6 +48,15 @@ struct TotalDeck: View {
             
             
             VStack {
+//                if diocane == true{
+                NavigationLink(
+                    destination: FinalStatsPage()
+                        .navigationBarHidden(true),
+                    isActive: self.$isActiveLong)
+                    {}
+                    .isDetailLink(false)
+                    
+//                }
                 if selectedDeck != nil {
                     NavigationLink(
                         destination: FlashcardList(useFlashdecks: useFlashdecks, deck:selectedDeck!),
@@ -50,15 +64,36 @@ struct TotalDeck: View {
                     { }
                     .isDetailLink(false)
                 }
+               
             }.hidden()
+            
             
             ForEach(useFlashdecks.deckList){deck in
                 Button(action: {
-                    self.selectedDeck = deck
-                    self.isActive = true
+                    
+                    
                 }, label: {
                     DeckRow(deck: deck)
-                })
+                }).simultaneousGesture(
+                    LongPressGesture()
+                        .onEnded { _ in
+                            self.isActiveLong.toggle()
+                            self.diocane.toggle()
+                            print("Loooong")
+                        }
+                )
+                    .highPriorityGesture(TapGesture()
+                                            .onEnded { _ in
+                        print("Tap")
+                        self.selectedDeck = deck
+                        self.isActive = true
+                    })
+                    
+                
+                /*.onLongPressGesture(perform:
+                 {
+                 
+                 })*/
                 
             }
             
@@ -75,6 +110,7 @@ struct TotalDeck: View {
             
             
         }.navigationBarTitleDisplayMode(.large)
+           
     }
     
 }
