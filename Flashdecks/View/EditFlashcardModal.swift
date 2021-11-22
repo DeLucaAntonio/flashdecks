@@ -17,12 +17,12 @@ struct EditFlashcardModal: View {
      @State var keywords: [String] = ["","",""]*/
     
 
-    @State private var newCard = Flashcard(id: "1",
+    @State private var newCard = Flashcard(id: String(Int(NSDate().timeIntervalSince1970)),
         name: "",keywords: ["","",""], definition: ""
     )
     
 //
-    @StateObject var useFlashdecks = UseFlashdecks()
+    @ObservedObject var useFlashdecks: UseFlashdecks
 //
 //    @State var newCard : Flashcard
     
@@ -32,9 +32,7 @@ struct EditFlashcardModal: View {
     //Var booleane per il controllo del riempimento dei campi termine e descrizione
     @State private var isTermPresented = true
     @State private var isDefinitonPresented = true
-    
-    //PROVA CON I DATI VERI
-   // @ObservedObject var useFlashdeck: UseFlashdecks
+    @State var deckId : String
     
     var body: some View {
         NavigationView{
@@ -104,7 +102,8 @@ struct EditFlashcardModal: View {
             }.padding()
                 .navigationBarItems(trailing: Button("Save",action: {
                   //ON CLICK SAVE ADDA LA NUOVA FLASHCARD
-                    useFlashdecks.createCard(newFlashcard: newCard, deckId: newCard.id)
+                    let result = useFlashdecks.createCard(newFlashcard: newCard, deckId: deckId)
+                    print(result)
                     isModalPresented.toggle()
                     
                 }) .disabled(isDefinitonPresented||isTermPresented) //Il save è disabilitato finchè non diventano entrambi veri

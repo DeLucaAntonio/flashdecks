@@ -19,7 +19,7 @@ public struct Flashdeck: Codable, Identifiable {
     var statistics: DeckStatistics
 }
 
-public struct Flashcard: Codable, Identifiable {
+public struct Flashcard: Codable, Identifiable, Hashable {
     public var id: String
     var name: String
     var keywords: [String]
