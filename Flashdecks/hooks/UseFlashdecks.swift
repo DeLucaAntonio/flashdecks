@@ -16,6 +16,7 @@ public class UseFlashdecks: ObservableObject {
     @Published var dbLocation: URL? = nil           // Our url to db json file
     @Published var deckList: [Flashdeck] = []       // Object of flashdecks and cards, to use around the app
     @Published var decksCardsFolderUrl: URL? = nil  // Our url to all decks and cards folder
+    @Published var selectedDeck: Flashdeck? = nil   // selected flashdeck to show
     
     init(){
         loadDecks()
@@ -215,6 +216,7 @@ public class UseFlashdecks: ObservableObject {
                         deck.flashcards.append(newFlashcard)
                         
                         deckList[index] = deck
+                        selectedDeck = deck
                         
                         // We remove the deck
                         try FileManager.default.removeItem(at: URL(string: "\(decksCardsFolderUrl!.absoluteString)\(deckId).json")!)
