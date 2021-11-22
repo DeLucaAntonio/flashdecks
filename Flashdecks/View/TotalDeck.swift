@@ -45,7 +45,7 @@ struct TotalDeck: View {
             VStack {
                 if selectedDeck != nil {
                     NavigationLink(
-                        destination: FlashcardList(name: selectedDeck!.name,description:selectedDeck!.description,card: selectedDeck!.flashcards),
+                        destination: FlashcardList(deck:selectedDeck!),
                         isActive: self.$isActive)
                     { }
                     .isDetailLink(false)
