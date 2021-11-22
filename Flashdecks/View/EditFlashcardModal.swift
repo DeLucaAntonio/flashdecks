@@ -18,7 +18,7 @@ struct EditFlashcardModal: View {
     
 
     @State private var newCard = Flashcard(id: "1",
-        name: "",Keywords: ["","",""], definition: ""
+        name: "",keywords: ["","",""], definition: ""
     )
     
 //
@@ -84,18 +84,18 @@ struct EditFlashcardModal: View {
                 VStack{
                     TextField(
                         "Optional",
-                        text: $newCard.Keywords[0]
+                        text: $newCard.keywords[0]
                     )
                     Divider()
                     
                     TextField(
                         "Optional",
-                        text: $newCard.Keywords[1]
+                        text: $newCard.keywords[1]
                     )
                     Divider()
                     TextField(
                         "Optional",
-                        text: $newCard.Keywords[2]
+                        text: $newCard.keywords[2]
                     )
                     Divider()
                 }
