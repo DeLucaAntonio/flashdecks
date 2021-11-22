@@ -23,6 +23,8 @@
 		83CD2E2F273E804B0093AD90 /* FlashdecksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CD2E2E273E804B0093AD90 /* FlashdecksTests.swift */; };
 		83CD2E39273E804B0093AD90 /* FlashdecksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CD2E38273E804B0093AD90 /* FlashdecksUITests.swift */; };
 		83CD2E3B273E804B0093AD90 /* FlashdecksUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83CD2E3A273E804B0093AD90 /* FlashdecksUITestsLaunchTests.swift */; };
+		83FAF8A5274AA6220058908C /* UseStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FAF8A4274AA6220058908C /* UseStatistics.swift */; };
+		83FAF8A7274AA95A0058908C /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FAF8A6274AA95A0058908C /* Statistics.swift */; };
 		FB24131D27453D1B00E072C4 /* FlashcardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB24131C27453D1B00E072C4 /* FlashcardView.swift */; };
 		FF4A40552748009D0011C6B2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF4A40542748009D0011C6B2 /* Launch Screen.storyboard */; };
 		FFC567DF2748FAAD002821AE /* FlashcardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC567DE2748FAAD002821AE /* FlashcardList.swift */; };
@@ -66,6 +68,8 @@
 		83CD2E34273E804B0093AD90 /* FlashdecksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlashdecksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83CD2E38273E804B0093AD90 /* FlashdecksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashdecksUITests.swift; sourceTree = "<group>"; };
 		83CD2E3A273E804B0093AD90 /* FlashdecksUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashdecksUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		83FAF8A4274AA6220058908C /* UseStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseStatistics.swift; sourceTree = "<group>"; };
+		83FAF8A6274AA95A0058908C /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 		FB24131C27453D1B00E072C4 /* FlashcardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardView.swift; sourceTree = "<group>"; };
 		FF4A40542748009D0011C6B2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		FF4A4056274803A20011C6B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -121,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				837812CE2741127000A705D3 /* Db.swift */,
+				83FAF8A6274AA95A0058908C /* Statistics.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				837812D22741151300A705D3 /* UseFlashdecks.swift */,
+				83FAF8A4274AA6220058908C /* UseStatistics.swift */,
 			);
 			path = hooks;
 			sourceTree = "<group>";
@@ -330,6 +336,7 @@
 				FFC567DF2748FAAD002821AE /* FlashcardList.swift in Sources */,
 				8303F7DF2747A7A200582462 /* TotalSuccess.swift in Sources */,
 				8303F7DE2747A7A200582462 /* SessionCompleted.swift in Sources */,
+				83FAF8A7274AA95A0058908C /* Statistics.swift in Sources */,
 				836CF4872747BF8E004989AB /* ModalView.swift in Sources */,
 				FFC567E12748FCE6002821AE /* EditFlashcardModal.swift in Sources */,
 				836CF4862747BF8E004989AB /* Home.swift in Sources */,
@@ -337,6 +344,7 @@
 				2067B8F827494CE2002B3FCF /* TotalDeck.swift in Sources */,
 				83CD2E1E273E80490093AD90 /* FlashdecksApp.swift in Sources */,
 				837812D32741151300A705D3 /* UseFlashdecks.swift in Sources */,
+				83FAF8A5274AA6220058908C /* UseStatistics.swift in Sources */,
 				8303F7E02747A7A200582462 /* AverageDuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

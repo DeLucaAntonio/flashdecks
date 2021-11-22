@@ -137,7 +137,7 @@ public class UseFlashdecks: ObservableObject {
         let deckId = Int(NSDate().timeIntervalSince1970)
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         
-        let newDeck = Flashdeck(id: String(deckId), description: description, name: name, flashcards: [])
+        let newDeck = Flashdeck(id: String(deckId), description: description, name: name, flashcards: [], statistics: DeckStatistics(totalSuccess: 0, averageDuration: 0, averageDurationList: [0]))
         
         do {
             let jsonData = try JSONEncoder().encode(newDeck)

@@ -16,11 +16,12 @@ public struct Flashdeck: Codable, Identifiable {
     var description: String
     var name: String
     var flashcards: [Flashcard]
+    var statistics: DeckStatistics
 }
 
 public struct Flashcard: Codable, Identifiable {
     public var id: String
     var name: String
-    var Keywords: [String]
+    var keywords: [String]
     var definition: String
 }
