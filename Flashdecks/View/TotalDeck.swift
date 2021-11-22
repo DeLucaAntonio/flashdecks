@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct TotalDeck: View {
-    let useFlashdecks: UseFlashdecks
-    
-    @State var selectedDeck : Flashdeck? = nil
+    @ObservedObject var useFlashdecks: UseFlashdecks
     //VAR PER IL REDIRECT DOPO IL DELETE DEL DECK
     @State var isActive : Bool = false
     

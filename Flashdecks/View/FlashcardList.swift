@@ -34,10 +34,9 @@ struct FlashcardList: View {
     
     //ENVIRONMENT
     @ObservedObject var useFlashdecks: UseFlashdecks
-    
-    let deck: Flashdeck
-    
-    
+
+    let deck: Flashdeck    
+
     var body: some View {
         
         VStack{

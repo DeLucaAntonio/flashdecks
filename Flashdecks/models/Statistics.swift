@@ -27,6 +27,6 @@ public struct GameStatistics {
 }
 
 public struct CardStatistic {
-    var time: Double
+    var time: Int
     var result: Bool // Risposta alla domanda true giusta, false sbagliata
 }

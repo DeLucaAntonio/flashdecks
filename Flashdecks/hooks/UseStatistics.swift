@@ -39,13 +39,13 @@ public class UseStatistics: ObservableObject {
         var success: Float = 0
         
         for result in results {
-            averageDurationResults += result.time
+            averageDurationResults += Double(result.time)
             if result.result {
                 success += 1
             }
         }
         
-        newDeck.statistics.averageDurationList.append((averageDurationResults * Double(results.count)) / 100)
+        newDeck.statistics.averageDurationList.append((Double(averageDurationResults) * Double(results.count)) / 100)
         newDeck.statistics.totalSuccess = success * 100 / Float(results.count)
         
         return UseFlashdecks().updateDeck(newDeck: newDeck)
@@ -54,7 +54,7 @@ public class UseStatistics: ObservableObject {
     // Func to call when a response is gived to a card during the game
     func registerScoreCard(id: String, start: Double, answer: Bool) -> CardStatistic {
         let timeResult = start - NSDate().timeIntervalSince1970 // Calculating time to respond at the answer
-        let result = CardStatistic(time: timeResult, result: answer)
+        let result = CardStatistic(time: Int(timeResult), result: answer)
         return result
     }
     
