@@ -64,7 +64,7 @@ struct SnapCarousel: View
         let widthOfHiddenCards: CGFloat = 32    // UIScreen.main.bounds.width - 10
         let cardHeight:         CGFloat = 279
         self.UIState.totalCards = deck.flashcards.count
-        self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970)
+       // self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970)
         
     
         
@@ -145,7 +145,7 @@ struct SnapCarousel: View
                                         Float((1.0/Float(self.UIState.totalCards)))
                                         self.Stats.cardStats.result = false
                                         self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970) - self.Stats.previousTime
-                                        self.Stats.previousTime = self.Stats.cardStats.time
+                                        self.Stats.previousTime = Int(NSDate().timeIntervalSince1970)
                                         self.Stats.stats.append(self.Stats.cardStats)
                                     }
                                 } label: {
@@ -166,7 +166,7 @@ struct SnapCarousel: View
                                         Float((1.0/Float(self.UIState.totalCards)))
                                         self.Stats.cardStats.result = true
                                         self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970) - self.Stats.previousTime
-                                        self.Stats.previousTime = self.Stats.cardStats.time
+                                        self.Stats.previousTime = Int(NSDate().timeIntervalSince1970)
                                         self.Stats.stats.append(self.Stats.cardStats)
                                     }
                                     
@@ -288,9 +288,9 @@ public class SessionStats: ObservableObject
     @Published var right: Int      = 0
     @Published var wrong: Int    = 0
     @Published var stats: [CardStatistic] = []
-    @Published var previousTime: Int = 0
+    @Published var previousTime: Int = Int(NSDate().timeIntervalSince1970)
     
-    @Published var cardStats: CardStatistic = CardStatistic(time: Int(NSDate().timeIntervalSince1970), result: false)
+    @Published var cardStats: CardStatistic = CardStatistic(time: 0, result: false)
     
 }
 
@@ -372,9 +372,9 @@ struct Carousel<Items : View> : View {
                 Float((1.0/Float(self.UIState.totalCards)))
                 self.Stats.cardStats.result = false
                 self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970) - self.Stats.previousTime
-                self.Stats.previousTime = self.Stats.cardStats.time
+                self.Stats.previousTime = Int(NSDate().timeIntervalSince1970)
                 self.Stats.stats.append(self.Stats.cardStats)
-                print(Int(NSDate().timeIntervalSince1970))
+                print(self.Stats.cardStats.time)
                
                 
                 let impactMed = UIImpactFeedbackGenerator(style: .medium)

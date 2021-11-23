@@ -34,9 +34,14 @@ public class UseStatistics: ObservableObject {
         globalStatistics.totalSuccess.self = resultSuccess
         globalStatistics.averageDuration.self = resutlDuration
         
-        avergeHours = String(Int(resutlDuration / 3600))
-        avergeMinutes = String(Int(resutlDuration / 3600 / 60))
-        avergeSeconds = String(Int(resutlDuration / 3600 / 60 / 60))
+        let myDate = Date(timeIntervalSince1970: resutlDuration)
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(abbreviation: "UTC")!
+        
+        avergeHours = String(calendar.component(.hour, from: myDate))
+        avergeMinutes = String(calendar.component(.hour, from: myDate))
+        avergeSeconds = String(calendar.component(.hour, from: myDate))
+        
     }
     
     // Func to register the new score game on db

@@ -21,8 +21,10 @@ struct FinalStatsPage: View {
     @State var minutes: String = "0"
     @State var seconds: String = "0"
     
+    
     let deck: Flashdeck
     let statistics: [CardStatistic]
+    
     
     func saveStats(){
         UseStatistics().newStatisticsDeck(deck: deck, results: statistics)
@@ -36,18 +38,26 @@ struct FinalStatsPage: View {
             if(statistic.result){
                 calculateSucess += 1
             }
-            calculateTime += statistic.time
+//            if(statistic.time != statistics[0].time ){
+                calculateTime += statistic.time
+//            }
+           
         }
         
         successRate = String(Float((calculateSucess * 100 ) / statistics.count))
         
         wrongRate = String(Float(100 - ((calculateSucess * 100) / statistics.count)))
+        let time = TimeInterval(calculateTime-2)
+        let myDate = Date(timeIntervalSince1970: time)
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(abbreviation: "UTC")!
         
-        hours = String(calculateTime / 3600)
-        minutes = String(calculateTime / 3600 / 60)
-        seconds = String(calculateTime / 3600 / 60 / 60)
-        print(calculateSucess)
-        print(statistics)
+        
+        
+        hours = String(calendar.component(.hour, from: myDate))
+        minutes = String(calendar.component(.minute, from: myDate))
+        seconds = String(calendar.component(.second, from: myDate))
+     
         
     }
     
@@ -172,6 +182,7 @@ struct FinalStatsPage: View {
                     Button(action: {
                         saveStats()
                         buttonPressed.toggle()
+                       
                     }) {
                         
                         Text("Done")
