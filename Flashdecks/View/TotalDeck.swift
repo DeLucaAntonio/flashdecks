@@ -11,6 +11,7 @@ struct TotalDeck: View {
     @ObservedObject var useFlashdecks: UseFlashdecks
     //VAR PER IL REDIRECT DOPO IL DELETE DEL DECK
     @State var isActive : Bool = false
+    @State var tapLong: Bool = false
     
     var body: some View {
         
@@ -37,6 +38,7 @@ struct TotalDeck: View {
     }
     private func visualDeck() -> some View{
         
+        
         ScrollView(.vertical, showsIndicators: false) {
             
             
@@ -54,11 +56,19 @@ struct TotalDeck: View {
                 Button(action: {
                     self.useFlashdecks.selectedDeck = deck
                     self.isActive = true
+                    self.tapLong = false
+                    
                 }, label: {
                     DeckRow(deck: deck)
+                }).simultaneousGesture(LongPressGesture().onEnded { _ in
+                    print("long pressed")
+                    self.tapLong = true
                 })
+                    
                 
             }
+           
+            
             
             //OLD VERSION
             /*   ForEach(useFlashdecks.deckList) { deck in
@@ -73,6 +83,7 @@ struct TotalDeck: View {
             
             
         }.navigationBarTitleDisplayMode(.large)
+            .navigate(to: GameStartScreenView(), when: $tapLong)
     }
     
 }
