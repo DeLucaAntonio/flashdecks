@@ -144,7 +144,8 @@ struct SnapCarousel: View
                                         self.UIState.progressValue = self.UIState.progressValue +
                                         Float((1.0/Float(self.UIState.totalCards)))
                                         self.Stats.cardStats.result = false
-                                        self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970) - self.Stats.cardStats.time
+                                        self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970) - self.Stats.previousTime
+                                        self.Stats.previousTime = self.Stats.cardStats.time
                                         self.Stats.stats.append(self.Stats.cardStats)
                                     }
                                 } label: {
@@ -164,7 +165,8 @@ struct SnapCarousel: View
                                         self.UIState.progressValue = self.UIState.progressValue +
                                         Float((1.0/Float(self.UIState.totalCards)))
                                         self.Stats.cardStats.result = true
-                                        self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970) - self.Stats.cardStats.time
+                                        self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970) - self.Stats.previousTime
+                                        self.Stats.previousTime = self.Stats.cardStats.time
                                         self.Stats.stats.append(self.Stats.cardStats)
                                     }
                                     
@@ -208,7 +210,7 @@ struct SnapCarousel: View
                             
                     }.navigate(to: Home(), when: $buttonDone)
                        /* .navigate(to: FinalStatsPage(), when:(self.UIState.totalCards == self.UIState.cardsDone))*/
-                        .navigate(to: FinalStatsPage(deck: deck), when:  $UIState.gameEnded)
+                        .navigate(to: FinalStatsPage(deck: deck, statistics: self.Stats.stats), when:  $UIState.gameEnded)
                         
 
                 }.onAppear {
@@ -270,8 +272,8 @@ public class UIStateModel: ObservableObject
     @Published var cardsDone: Int = 0 {
         didSet{
             if(cardsDone == totalCards){
+            
                 gameEnded = true
-                
                 
             }
         }
@@ -369,8 +371,10 @@ struct Carousel<Items : View> : View {
                 self.UIState.progressValue = self.UIState.progressValue +
                 Float((1.0/Float(self.UIState.totalCards)))
                 self.Stats.cardStats.result = false
-                self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970) - self.Stats.cardStats.time
+                self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970) - self.Stats.previousTime
+                self.Stats.previousTime = self.Stats.cardStats.time
                 self.Stats.stats.append(self.Stats.cardStats)
+                print(Int(NSDate().timeIntervalSince1970))
                
                 
                 let impactMed = UIImpactFeedbackGenerator(style: .medium)
