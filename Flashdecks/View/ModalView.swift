@@ -152,8 +152,8 @@ struct ModalView: View {
 }
 
 
-struct ModalView_Previews: PreviewProvider {
-    static var previews: some View {
-        Home()
-    }
-}
+//struct ModalView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Home()
+//    }
+//}

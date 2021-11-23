@@ -16,8 +16,6 @@ struct TotalDeck: View {
     @State var longPressed: Bool = false
     @State var isActiveLong: Bool = false
     
-    @State var selectedDeck : Flashdeck? = nil
-    
     var body: some View {
         
         VStack(alignment: .leading){
@@ -47,23 +45,23 @@ struct TotalDeck: View {
             
             
             VStack {
-//                if diocane == true{
-                NavigationLink(
-                    destination: GameStartScreenView()
-                        .navigationBarHidden(true),
-                    isActive: self.$isActiveLong)
+                if useFlashdecks.selectedDeck != nil{
+                    NavigationLink(
+                        destination: GameStartScreenView(deck: useFlashdecks.selectedDeck!)
+                            .navigationBarHidden(true),
+                        isActive: self.$isActiveLong)
                     {}
                     .isDetailLink(false)
-                    
-//                }
-                if selectedDeck != nil {
+                }
+                
+                if useFlashdecks.selectedDeck != nil {
                     NavigationLink(
-                        destination: FlashcardList(useFlashdecks: useFlashdecks, deck:selectedDeck!),
+                        destination: FlashcardList(useFlashdecks: useFlashdecks, deck: useFlashdecks.selectedDeck!),
                         isActive: self.$isActive)
                     { }
                     .isDetailLink(false)
                 }
-               
+                
             }.hidden()
             
             
@@ -76,8 +74,8 @@ struct TotalDeck: View {
                 }).simultaneousGesture(
                     LongPressGesture()
                         .onEnded { _ in
-                           
-                            self.selectedDeck = deck
+                            
+                            self.useFlashdecks.selectedDeck = deck
                             self.isActive = true
                             print("Loooong")
                         }
@@ -85,10 +83,11 @@ struct TotalDeck: View {
                     .highPriorityGesture(TapGesture()
                                             .onEnded { _ in
                         print("Tap")
+                        self.useFlashdecks.selectedDeck = deck
                         self.isActiveLong.toggle()
-                     
+                        
                     })
-                    
+                
                 
                 /*.onLongPressGesture(perform:
                  {
@@ -110,7 +109,7 @@ struct TotalDeck: View {
             
             
         }.navigationBarTitleDisplayMode(.large)
-           
+        
     }
     
 }

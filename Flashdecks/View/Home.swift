@@ -11,11 +11,8 @@ import SwiftUI
 struct Home: View {
     
     @StateObject var useFlashdecks = UseFlashdecks()
-    
-    @State var ore: String = "1"
-    @State var minuti: String = "30"
-    @State var secondi: String = "20"
-    @State var successo: String = "70"
+    @StateObject var useStatistics = UseStatistics()
+
     @State var sessionComplete: String = "26"
     // @State var showSheet: Bool = false
     //  @State var isPresentingAddModal: Bool = false
@@ -48,7 +45,7 @@ struct Home: View {
                     
                     HStack {
                         
-                        AverageDuration(hours: ore, minutes: minuti, seconds: secondi)
+                        AverageDuration(hours: useStatistics.avergeHours, minutes: useStatistics.avergeMinutes, seconds: useStatistics.avergeSeconds)
                         Spacer()
                         SessionCompleted(sessionCompleted: sessionComplete)
                         
@@ -56,7 +53,7 @@ struct Home: View {
                     
                     .padding()
                     
-                    TotalSuccess(succes: successo)
+                    TotalSuccess(succes: String(useStatistics.globalStatistics.totalSuccess))
                         .padding(.top, -15.0)
                     
                     HStack{

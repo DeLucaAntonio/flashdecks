@@ -29,6 +29,7 @@ struct ProgressBar: View {
 
 struct SnapCarousel: View
 {
+    
     //@EnvironmentObject var UIState: UIStateModel
     var Stats: SessionStats
     
@@ -44,7 +45,7 @@ struct SnapCarousel: View
     @State var minutes: Int = 0
     @State var seconds: Int = 0
     
-    @State var cardList: [Flashcard] = [Flashcard(id: "020", name: "Object", keywords: ["class", "method", "instance"], definition: "Objects are the things you think about first in designing a program and they are also the units of code that are eventually derived from the process. Each object is an instance of a particular class or subclass with the class's own methods or procedures and data variables."), Flashcard(id: "030", name: "Bestemmioni", keywords: ["KTM", "KTM+", "KTM++"], definition: "le classi sono molto belle"), Flashcard(id: "040", name: "boh", keywords: ["ch aggia scrivr", "a me m piac a nutell", "o bacin"], definition: "GELooooo MRIOOOOOOOS")]
+    let deck: Flashdeck
    
     @State var timer: Timer? = nil
     
@@ -60,7 +61,7 @@ struct SnapCarousel: View
         let spacing:            CGFloat = 1
         let widthOfHiddenCards: CGFloat = 32    // UIScreen.main.bounds.width - 10
         let cardHeight:         CGFloat = 279
-        self.UIState.totalCards = cardList.count
+        self.UIState.totalCards = deck.flashcards.count
         self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970)
         
        
@@ -90,7 +91,7 @@ struct SnapCarousel: View
                             
                             
                             HStack(spacing:190){
-                                Text(String(self.UIState.cardsDone) + "/" + String(cardList.count)).font(.system(size: 18, weight: .regular))
+                                Text(String(self.UIState.cardsDone) + "/" + String(deck.flashcards.count)).font(.system(size: 18, weight: .regular))
                                 
                                 HStack {
                                 //image 1
@@ -108,9 +109,9 @@ struct SnapCarousel: View
                             }.frame(height: 40)
                             
                             Spacer()
-                            Carousel( numberOfItems: CGFloat( cardList.count ), spacing: spacing, widthOfHiddenCards: widthOfHiddenCards )
+                            Carousel( numberOfItems: CGFloat( deck.flashcards.count ), spacing: spacing, widthOfHiddenCards: widthOfHiddenCards )
                             {
-                                ForEach( cardList, id: \.self.id ) { card in
+                                ForEach( deck.flashcards, id: \.self.id ) { card in
                                     Item( _id:                  Int(card.id)!,
                                           spacing:              spacing,
                                           widthOfHiddenCards:   widthOfHiddenCards,
@@ -177,7 +178,7 @@ struct SnapCarousel: View
                             Spacer()
                            
                                 
-                        }.navigationBarTitle("deck.name")
+                        }.navigationBarTitle(deck.name)
                         .navigationBarTitleDisplayMode(.inline)
                         
                         .toolbar{
