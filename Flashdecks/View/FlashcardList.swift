@@ -50,7 +50,7 @@ struct FlashcardList: View {
                 //ADD NEW FLASHCARD COMPONENT
                 ZStack{
                     Rectangle()
-                        .frame(width: 320.0, height: 100.0)
+                        .frame(width: 325.0, height: 100.0)
                         .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
                         .foregroundColor(Color(UIColor(named: "GreyOpacity")!))
                         .shadow(color:.gray.opacity(0.5),radius: 5,x:0,y:4)

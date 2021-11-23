@@ -15,7 +15,8 @@ struct TotalDeck: View {
     //Long press var
     @State var longPressed: Bool = false
     @State var isActiveLong: Bool = false
-    @State var diocane : Bool = false
+    
+    @State var selectedDeck : Flashdeck? = nil
     
     var body: some View {
         
@@ -48,7 +49,7 @@ struct TotalDeck: View {
             VStack {
 //                if diocane == true{
                 NavigationLink(
-                    destination: FinalStatsPage()
+                    destination: GameStartScreenView()
                         .navigationBarHidden(true),
                     isActive: self.$isActiveLong)
                     {}
@@ -75,16 +76,17 @@ struct TotalDeck: View {
                 }).simultaneousGesture(
                     LongPressGesture()
                         .onEnded { _ in
-                            self.isActiveLong.toggle()
-                            self.diocane.toggle()
+                           
+                            self.selectedDeck = deck
+                            self.isActive = true
                             print("Loooong")
                         }
                 )
                     .highPriorityGesture(TapGesture()
                                             .onEnded { _ in
                         print("Tap")
-                        self.selectedDeck = deck
-                        self.isActive = true
+                        self.isActiveLong.toggle()
+                     
                     })
                     
                 
