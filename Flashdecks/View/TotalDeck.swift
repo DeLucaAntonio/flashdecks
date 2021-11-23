@@ -16,7 +16,7 @@ struct TotalDeck: View {
     @State var longPressed: Bool = false
     @State var isActiveLong: Bool = false
     
-    @State var selectedDeck : Flashdeck? = nil
+//    @State var selectedDeck : Flashdeck? = nil
     
     var body: some View {
         
@@ -56,9 +56,9 @@ struct TotalDeck: View {
                     .isDetailLink(false)
                     
 //                }
-                if selectedDeck != nil {
+                if useFlashdecks.selectedDeck != nil {
                     NavigationLink(
-                        destination: FlashcardList(useFlashdecks: useFlashdecks, deck:selectedDeck!),
+                        destination: FlashcardList(useFlashdecks: useFlashdecks, deck:useFlashdecks.selectedDeck!),
                         isActive: self.$isActive)
                     { }
                     .isDetailLink(false)
@@ -77,7 +77,7 @@ struct TotalDeck: View {
                     LongPressGesture()
                         .onEnded { _ in
                            
-                            self.selectedDeck = deck
+                            self.useFlashdecks.selectedDeck = deck
                             self.isActive = true
                             print("Loooong")
                         }
