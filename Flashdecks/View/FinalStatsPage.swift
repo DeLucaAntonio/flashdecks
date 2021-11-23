@@ -152,7 +152,10 @@ struct FinalStatsPage: View {
             
             
             
-        }.navigate(to: Home(), when: $buttonPressed)
+        }
+        .navigate(to: Home(), when: $buttonPressed)
+        
+        
         
     }
     

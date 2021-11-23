@@ -17,10 +17,10 @@ struct ProgressBar: View {
                 ZStack(alignment: .leading) {
                     Rectangle().frame(width: geometry.size.width , height: geometry.size.height)
                         .opacity(0.3)
-                        .foregroundColor(Color(UIColor.systemTeal))
+                        .foregroundColor(Color(UIColor(named:"GreyOpacity")!))
                     
                     Rectangle().frame(width: min(CGFloat(self.UIState.progressValue)*geometry.size.width, geometry.size.width), height: geometry.size.height)
-                        .foregroundColor(Color(UIColor.systemBlue))
+                        .foregroundColor(Color(UIColor(named: "PrimaryViolet")!))
                         .animation(.linear)
                 }.cornerRadius(45.0)
             }
@@ -48,8 +48,12 @@ struct SnapCarousel: View
    
     @State var timer: Timer? = nil
     
+    //Var per l'allert
+    @State var showingAlert2: Bool = false
     
+   // PROVA let deck: Flashdeck
     
+    @State var gameEnded : Bool = false
     
     var body: some View
     {
@@ -59,11 +63,22 @@ struct SnapCarousel: View
         self.UIState.totalCards = cardList.count
         self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970)
         
-        
+       
 
         return  Canvas
                 {
-                    
+                    //PROVA REDIRECT MA NON FUNZIONA 
+//                    VStack{
+//
+//                        if(self.UIState.cardsDone==cardList.count) {self.$gameEnded.toggle}
+//                        NavigationLink(
+//                            destination: FinalStatsPage()
+//                                .navigationBarHidden(true),
+//                            isActive: self.$gameEnded)
+//                            {}
+//                            .isDetailLink(false)
+//                    }.hidden()
+                
                     //
                     // TODO: find a way to avoid passing same arguments to Carousel and Item
                     //
@@ -106,7 +121,7 @@ struct SnapCarousel: View
                                     }
                                     
                                     .cornerRadius( 8 )
-                                    .shadow( color: Color( "shadow1" ), radius: 4, x: 0, y: 4 )
+                                    .shadow( color: Color( "GreyOpacity" ), radius: 4, x: 0, y: 4 )
                                     .transition( AnyTransition.slide )
                                     .animation( .spring() )
                                     
@@ -162,15 +177,25 @@ struct SnapCarousel: View
                             Spacer()
                            
                                 
-                        }.navigationBarTitle("hello")
+                        }.navigationBarTitle("deck.name")
                         .navigationBarTitleDisplayMode(.inline)
                         
                         .toolbar{
                             Button("Done") {
                                 print("Help tapped!")
-                                //aggiungere lle statistiche
-                                buttonDone.toggle()
-                                //INSERIRE STATISTICHE QUI
+                                
+                                self.showingAlert2.toggle()
+                            }.alert(isPresented:$showingAlert2) {
+                                Alert(
+                                    title: Text("Are you sure you want to delete this deck?"),
+                                    message: Text("There is no undo"),
+                                    primaryButton:.destructive(Text("Quit game")) {
+                                        
+                                        buttonDone.toggle()
+                                        
+                                    },
+                                    secondaryButton: .cancel()
+                                )
                             }
                         }
                             
@@ -180,7 +205,7 @@ struct SnapCarousel: View
                         self.startTimer()
                     
                     
-                    }.navigate(to: FinalStatsPage(), when: $buttonDone)
+                    }.navigate(to: Home(), when: $buttonDone)
     }
     
    
@@ -377,6 +402,10 @@ struct Item<Content: View>: View {
 
     var body: some View {
         ZStack {
+            
+          
+            
+            
             if flipped {
                 
                 ZStack {
@@ -469,10 +498,10 @@ struct Item<Content: View>: View {
 }
 
 
-struct SnapCarousel_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        SnapCarousel(Stats: Stats, UIState: UIState )
-        
-    }
-}
+//struct SnapCarousel_Previews: PreviewProvider {
+//    static var previews: some View {
+//        
+//        SnapCarousel(Stats: Stats, UIState: UIState )
+//        
+//    }
+//}
