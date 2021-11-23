@@ -205,19 +205,17 @@ struct SnapCarousel: View
                         
                         
                             
-                            
-                            
-                    }.onAppear {
-                        self.startTimer()
-                        
-                    
-                    
                     }.navigate(to: Home(), when: $buttonDone)
                        /* .navigate(to: FinalStatsPage(), when:(self.UIState.totalCards == self.UIState.cardsDone))*/
-                        .navigate(to: FinalStatsPage(), when:  $UIState.gameEnded)
+                    .navigate(to: FinalStatsPage(), when:  $UIState.gameEnded)
                         
 
-    }
+                }.onAppear {
+                    self.startTimer()
+                    
+                
+                
+                }
     
    
     }
@@ -272,6 +270,7 @@ public class UIStateModel: ObservableObject
         didSet{
             if(cardsDone == totalCards){
                 gameEnded = true
+                
                 
             }
         }
