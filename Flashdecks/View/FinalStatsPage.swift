@@ -160,11 +160,11 @@ struct FinalStatsPage: View {
     
 }
 
-//struct FinalStatsPage_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FinalStatsPage()
-//    }
-//}
+struct FinalStatsPage_Previews: PreviewProvider {
+    static var previews: some View {
+        FinalStatsPage()
+    }
+}
 
 
 

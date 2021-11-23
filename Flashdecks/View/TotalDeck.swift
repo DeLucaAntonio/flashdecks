@@ -11,6 +11,7 @@ struct TotalDeck: View {
     @ObservedObject var useFlashdecks: UseFlashdecks
     //VAR PER IL REDIRECT DOPO IL DELETE DEL DECK
     @State var isActive : Bool = false
+    @State var tapLong: Bool = false
     
     //Long press var
     @State var longPressed: Bool = false
@@ -42,6 +43,7 @@ struct TotalDeck: View {
         
     }
     private func visualDeck() -> some View{
+        
         
         ScrollView(.vertical, showsIndicators: false) {
             
@@ -96,6 +98,8 @@ struct TotalDeck: View {
                  })*/
                 
             }
+           
+            
             
             //OLD VERSION
             /*   ForEach(useFlashdecks.deckList) { deck in
