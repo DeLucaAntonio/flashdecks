@@ -64,7 +64,7 @@ struct SnapCarousel: View
         let widthOfHiddenCards: CGFloat = 32    // UIScreen.main.bounds.width - 10
         let cardHeight:         CGFloat = 279
         self.UIState.totalCards = deck.flashcards.count
-        self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970)
+       // self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970)
         
     
         
@@ -144,7 +144,8 @@ struct SnapCarousel: View
                                         self.UIState.progressValue = self.UIState.progressValue +
                                         Float((1.0/Float(self.UIState.totalCards)))
                                         self.Stats.cardStats.result = false
-                                        self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970) - self.Stats.cardStats.time
+                                        self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970) - self.Stats.previousTime
+                                        self.Stats.previousTime = Int(NSDate().timeIntervalSince1970)
                                         self.Stats.stats.append(self.Stats.cardStats)
                                     }
                                 } label: {
@@ -164,7 +165,8 @@ struct SnapCarousel: View
                                         self.UIState.progressValue = self.UIState.progressValue +
                                         Float((1.0/Float(self.UIState.totalCards)))
                                         self.Stats.cardStats.result = true
-                                        self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970) - self.Stats.cardStats.time
+                                        self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970) - self.Stats.previousTime
+                                        self.Stats.previousTime = Int(NSDate().timeIntervalSince1970)
                                         self.Stats.stats.append(self.Stats.cardStats)
                                     }
                                     
@@ -208,7 +210,7 @@ struct SnapCarousel: View
                             
                     }.navigate(to: Home(), when: $buttonDone)
                        /* .navigate(to: FinalStatsPage(), when:(self.UIState.totalCards == self.UIState.cardsDone))*/
-                        .navigate(to: FinalStatsPage(deck: deck), when:  $UIState.gameEnded)
+                        .navigate(to: FinalStatsPage(deck: deck, statistics: self.Stats.stats), when:  $UIState.gameEnded)
                         
 
                 }.onAppear {
@@ -270,8 +272,8 @@ public class UIStateModel: ObservableObject
     @Published var cardsDone: Int = 0 {
         didSet{
             if(cardsDone == totalCards){
+            
                 gameEnded = true
-                
                 
             }
         }
@@ -286,9 +288,9 @@ public class SessionStats: ObservableObject
     @Published var right: Int      = 0
     @Published var wrong: Int    = 0
     @Published var stats: [CardStatistic] = []
-    @Published var previousTime: Int = 0
+    @Published var previousTime: Int = Int(NSDate().timeIntervalSince1970)
     
-    @Published var cardStats: CardStatistic = CardStatistic(time: Int(NSDate().timeIntervalSince1970), result: false)
+    @Published var cardStats: CardStatistic = CardStatistic(time: 0, result: false)
     
 }
 
@@ -369,8 +371,10 @@ struct Carousel<Items : View> : View {
                 self.UIState.progressValue = self.UIState.progressValue +
                 Float((1.0/Float(self.UIState.totalCards)))
                 self.Stats.cardStats.result = false
-                self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970) - self.Stats.cardStats.time
+                self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970) - self.Stats.previousTime
+                self.Stats.previousTime = Int(NSDate().timeIntervalSince1970)
                 self.Stats.stats.append(self.Stats.cardStats)
+                print(self.Stats.cardStats.time)
                
                 
                 let impactMed = UIImpactFeedbackGenerator(style: .medium)

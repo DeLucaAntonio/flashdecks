@@ -9,13 +9,59 @@ import SwiftUI
 
 struct FinalStatsPage: View {
     
-    @State var succ: String = "60"
+    @State var succ: String = "0"
     
     //passare le variabili di stato per le statistiche
     @State var buttonPressed: Bool = false
     @State var playAgain : Bool = false
     
+    @State var successRate: String = "0"
+    @State var wrongRate: String = "0"
+    @State var hours: String = "0"
+    @State var minutes: String = "0"
+    @State var seconds: String = "0"
+    
+    
     let deck: Flashdeck
+    let statistics: [CardStatistic]
+    
+    
+    func saveStats(){
+        UseStatistics().newStatisticsDeck(deck: deck, results: statistics)
+    }
+    
+    func calculateStats(){
+        var calculateSucess = 0
+        var calculateTime = 0
+        
+        for statistic in statistics {
+            if(statistic.result){
+                calculateSucess += 1
+            }
+//            if(statistic.time != statistics[0].time ){
+                calculateTime += statistic.time
+//            }
+           
+        }
+        
+        successRate = String(Float((calculateSucess * 100 ) / statistics.count))
+        
+        wrongRate = String(Float(100 - ((calculateSucess * 100) / statistics.count)))
+        let time = TimeInterval(calculateTime-2)
+        let myDate = Date(timeIntervalSince1970: time)
+        var calendar = Calendar.current
+        calendar.timeZone = TimeZone(abbreviation: "UTC")!
+        
+        
+        
+        hours = String(calendar.component(.hour, from: myDate))
+        minutes = String(calendar.component(.minute, from: myDate))
+        seconds = String(calendar.component(.second, from: myDate))
+     
+        
+    }
+    
+    
     
     var body: some View {
         
@@ -44,7 +90,7 @@ struct FinalStatsPage: View {
                         .fill(Color.white)
                         .frame(width: 285, height: 63)
                     
-                    Text("60% Right")
+                    Text("\(successRate)% Success")
                         .fontWeight(.bold)
                         .font(.largeTitle)
                         .lineSpacing(24)
@@ -57,7 +103,7 @@ struct FinalStatsPage: View {
                             .fill(Color(red: 0.38, green: 0.38, blue: 0.85))
                             .frame(width: 285, height: 63)
                         
-                        Text("40% Wrong")
+                        Text("\(wrongRate)% Wrong")
                             .fontWeight(.medium)
                             .font(.title)
                  //.frame(width: 205, alignment: .topLeading)
@@ -99,7 +145,7 @@ struct FinalStatsPage: View {
                         .fill(Color(red: 0.29, green: 0.28, blue: 0.83))
                         .frame(width: 284, height: 67)
                     
-                    Text("1:30:02")
+                    Text("\(hours)h \(minutes)m \(seconds)s")
                         .fontWeight(.medium)
                         .font(.title)
                         .lineSpacing(24)
@@ -111,7 +157,9 @@ struct FinalStatsPage: View {
                 Spacer()
                 VStack{
                     Button(action: {
+                        saveStats()
                         playAgain.toggle()
+                        
                     }) {
                         ZStack{
                             
@@ -132,7 +180,9 @@ struct FinalStatsPage: View {
                     }
                     
                     Button(action: {
+                        saveStats()
                         buttonPressed.toggle()
+                       
                     }) {
                         
                         Text("Done")
@@ -154,6 +204,9 @@ struct FinalStatsPage: View {
         }
         .navigate(to: Home(), when: $buttonPressed)
         .navigate(to: GameStartScreenView(deck: deck ), when: $playAgain)
+        .onAppear {
+            calculateStats()
+        }
         
         
     }

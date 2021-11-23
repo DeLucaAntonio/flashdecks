@@ -12,6 +12,7 @@ struct Home: View {
     
     @StateObject var useFlashdecks = UseFlashdecks()
     @StateObject var useStatistics = UseStatistics()
+    
 
     @State var sessionComplete: String = "26"
     
@@ -49,13 +50,13 @@ struct Home: View {
                         
                         AverageDuration(hours: useStatistics.avergeHours, minutes: useStatistics.avergeMinutes, seconds: useStatistics.avergeSeconds)
                         Spacer()
-                        SessionCompleted(sessionCompleted: sessionComplete)
+                        SessionCompleted(sessionCompleted: String(useStatistics.globalStatistics.completedSession) )
                         
                     }
                     
                     .padding()
                     
-                    TotalSuccess(succes: String(useStatistics.globalStatistics.totalSuccess))
+                    TotalSuccess(succes: String(format: "%.2f", useStatistics.globalStatistics.totalSuccess))
                         .padding(.top, -15.0)
                     
                     HStack{
@@ -135,8 +136,10 @@ struct Home: View {
                                     })
             
        }.navigationBarHidden(true)
-        
-           
+            .environmentObject(useFlashdecks)
+            .onAppear {
+                useStatistics.loadStatistics()
+            }
         
         
     }
