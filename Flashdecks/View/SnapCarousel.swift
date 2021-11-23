@@ -33,7 +33,7 @@ struct SnapCarousel: View
     //@EnvironmentObject var UIState: UIStateModel
     var Stats: SessionStats
     
-    var UIState: UIStateModel
+    @State var UIState: UIStateModel
     @State var flipped: Bool = false
     @State var flashcardRotation = 0.0
     @State var contentRotation = 0.0
@@ -55,6 +55,8 @@ struct SnapCarousel: View
    // PROVA let deck: Flashdeck
     
     @State var gameEnded : Bool = false
+        
+    
     
     var body: some View
     {
@@ -64,26 +66,25 @@ struct SnapCarousel: View
         self.UIState.totalCards = deck.flashcards.count
         self.Stats.cardStats.time = Int(NSDate().timeIntervalSince1970)
         
-       
+    
+        
+        
 
-        return  Canvas
+        
+            
+      
+       return  Canvas
                 {
-                    //PROVA REDIRECT MA NON FUNZIONA 
-//                    VStack{
-//
-//                        if(self.UIState.cardsDone==cardList.count) {self.$gameEnded.toggle}
-//                        NavigationLink(
-//                            destination: FinalStatsPage()
-//                                .navigationBarHidden(true),
-//                            isActive: self.$gameEnded)
-//                            {}
-//                            .isDetailLink(false)
-//                    }.hidden()
+                   // PROVA REDIRECT MA NON FUNZIONA
+                  
                 
                     //
                     // TODO: find a way to avoid passing same arguments to Carousel and Item
                     //
+                    
                     NavigationView{
+                        
+                        
                         
                         
                         VStack{
@@ -107,6 +108,7 @@ struct SnapCarousel: View
                                 }
                                 
                             }.frame(height: 40)
+                            
                             
                             Spacer()
                             Carousel( numberOfItems: CGFloat( deck.flashcards.count ), spacing: spacing, widthOfHiddenCards: widthOfHiddenCards )
@@ -181,6 +183,7 @@ struct SnapCarousel: View
                         }.navigationBarTitle(deck.name)
                         .navigationBarTitleDisplayMode(.inline)
                         
+                        
                         .toolbar{
                             Button("Done") {
                                 print("Help tapped!")
@@ -199,18 +202,24 @@ struct SnapCarousel: View
                                 )
                             }
                         }
+                        
+                        
+                        
                             
-                            
-                            
-                    }.onAppear {
-                        self.startTimer()
-                    
-                    
                     }.navigate(to: Home(), when: $buttonDone)
-    }
+                       /* .navigate(to: FinalStatsPage(), when:(self.UIState.totalCards == self.UIState.cardsDone))*/
+                    .navigate(to: FinalStatsPage(), when:  $UIState.gameEnded)
+                        
+
+                }.onAppear {
+                    self.startTimer()
+                    
+                
+                
+                }
     
    
-}
+    }
     
     func startTimer(){
         timerIsPaused = false
@@ -236,6 +245,10 @@ struct SnapCarousel: View
       }
     
     
+    
+   
+    
+    
 
 }
 
@@ -254,9 +267,18 @@ public class UIStateModel: ObservableObject
     @Published var activeCard: Int      = 0
     @Published var screenDrag: Float    = 0.0
     @Published var buttonsShow: Bool = false
-    @Published var cardsDone: Int = 0
+    @Published var cardsDone: Int = 0 {
+        didSet{
+            if(cardsDone == totalCards){
+                gameEnded = true
+                
+                
+            }
+        }
+    }
     @Published var totalCards: Int = 0
     @Published var progressValue: Float = 0.0
+    @Published var gameEnded: Bool  = false
 }
 
 public class SessionStats: ObservableObject
@@ -283,6 +305,8 @@ struct Carousel<Items : View> : View {
     
     @EnvironmentObject var UIState: UIStateModel
     @EnvironmentObject var Stats: SessionStats
+    
+    
         
     @inlinable public init(
         numberOfItems: CGFloat,
@@ -297,9 +321,11 @@ struct Carousel<Items : View> : View {
         self.totalSpacing = (numberOfItems - 1) * spacing
         self.cardWidth = UIScreen.main.bounds.width - (widthOfHiddenCards*2) - (spacing*2) //279
         
+        
     }
     
     var body: some View {
+        
         
         let totalCanvasWidth: CGFloat = (cardWidth * numberOfItems) + totalSpacing
         let xOffsetToShift = (totalCanvasWidth - UIScreen.main.bounds.width) / 2
@@ -314,6 +340,16 @@ struct Carousel<Items : View> : View {
         if (calcOffset != Float(nextOffset)) {
             calcOffset = Float(activeOffset) + UIState.screenDrag
         }
+        
+        
+//        if(self.UIState.totalCards == self.UIState.cardsDone){
+//
+//            self.UIState.gameEnded.toggle()
+//            navigate(to: FinalStatsPage(), when:  $UIState.gameEnded)
+//
+//
+//        }
+        
         
         return HStack(alignment: .center, spacing: spacing) {
             items
@@ -348,6 +384,8 @@ struct Carousel<Items : View> : View {
 //            }
         })
     }
+    
+    
 }
 
 
@@ -500,6 +538,8 @@ struct Item<Content: View>: View {
 
 
 //struct SnapCarousel_Previews: PreviewProvider {
+//    var UIState: UIStateModel = UIStateModel()
+//    var Stats: SessionStats = SessionStats()
 //    static var previews: some View {
 //        
 //        SnapCarousel(Stats: Stats, UIState: UIState )

@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-var UIState: UIStateModel = UIStateModel()
-var Stats: SessionStats = SessionStats()
+
 
 // The notification we'll send when a shake gesture happens.
 extension UIDevice {
@@ -87,6 +86,8 @@ class HapticManager {
 
 struct GameStartScreenView: View {
     @State var willMoveToNextScreen = false
+    var UIState: UIStateModel = UIStateModel()
+    var Stats: SessionStats = SessionStats()
     
     let deck: Flashdeck
     
