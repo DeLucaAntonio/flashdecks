@@ -208,7 +208,7 @@ struct SnapCarousel: View
                             
                     }.navigate(to: Home(), when: $buttonDone)
                        /* .navigate(to: FinalStatsPage(), when:(self.UIState.totalCards == self.UIState.cardsDone))*/
-                    .navigate(to: FinalStatsPage(), when:  $UIState.gameEnded)
+                        .navigate(to: FinalStatsPage(deck: deck), when:  $UIState.gameEnded)
                         
 
                 }.onAppear {

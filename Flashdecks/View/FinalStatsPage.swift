@@ -15,6 +15,8 @@ struct FinalStatsPage: View {
     @State var buttonPressed: Bool = false
     @State var playAgain : Bool = false
     
+    let deck: Flashdeck
+    
     var body: some View {
         
         
@@ -151,7 +153,7 @@ struct FinalStatsPage: View {
             
         }
         .navigate(to: Home(), when: $buttonPressed)
-        .navigate(to: GameStartScreenView(), when: $playAgain)
+        .navigate(to: GameStartScreenView(deck: deck ), when: $playAgain)
         
         
     }
@@ -160,11 +162,11 @@ struct FinalStatsPage: View {
     
 }
 
-struct FinalStatsPage_Previews: PreviewProvider {
-    static var previews: some View {
-        FinalStatsPage()
-    }
-}
+//struct FinalStatsPage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FinalStatsPage()
+//    }
+//}
 
 
 
