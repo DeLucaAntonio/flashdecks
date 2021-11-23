@@ -37,8 +37,8 @@ struct TotalSuccess: View {
             .fontWeight(.bold)
             .font(.largeTitle)
             .multilineTextAlignment(.trailing)
-            .frame(width: 100, alignment: .leading)
-            .scaleEffect(1.5, anchor: .center)
+            .frame(width: 130, alignment: .center)
+            .scaleEffect(1.2, anchor: .center)
             .foregroundColor(.white)
            
             

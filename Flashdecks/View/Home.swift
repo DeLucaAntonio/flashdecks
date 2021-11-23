@@ -56,7 +56,7 @@ struct Home: View {
                     
                     .padding()
                     
-                    TotalSuccess(succes: String(format: "%.2f", useStatistics.globalStatistics.totalSuccess))
+                    TotalSuccess(succes: String(format: "%.1f", useStatistics.globalStatistics.totalSuccess))
                         .padding(.top, -15.0)
                     
                     HStack{

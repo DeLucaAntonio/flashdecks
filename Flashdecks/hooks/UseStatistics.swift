@@ -24,23 +24,26 @@ public class UseStatistics: ObservableObject {
         var totalSuccess: Float = 0
         var averageDuration: Double = 0
         
-        for deck in deckList {
-            totalSuccess += deck.statistics.totalSuccess
-            averageDuration += deck.statistics.averageDuration
+        if !deckList.isEmpty{
+            for deck in deckList {
+                totalSuccess += deck.statistics.totalSuccess
+                averageDuration += deck.statistics.averageDuration
+                print(deck)
+            }
+            let resultSuccess = totalSuccess / Float(deckList.count)
+            let resutlDuration = averageDuration / Double(deckList.count)
+            
+            globalStatistics.totalSuccess.self = resultSuccess
+            globalStatistics.averageDuration.self = resutlDuration
+            
+            let myDate = Date(timeIntervalSince1970: resutlDuration * 100)
+            var calendar = Calendar.current
+            calendar.timeZone = TimeZone(abbreviation: "UTC")!
+            
+            avergeHours = String(calendar.component(.hour, from: myDate))
+            avergeMinutes = String(calendar.component(.minute, from: myDate))
+            avergeSeconds = String(calendar.component(.second, from: myDate))
         }
-        let resultSuccess = (totalSuccess * Float(deckList.count)) / 100
-        let resutlDuration = (averageDuration * Double(deckList.count)) / 100
-        
-        globalStatistics.totalSuccess.self = resultSuccess
-        globalStatistics.averageDuration.self = resutlDuration
-        
-        let myDate = Date(timeIntervalSince1970: resutlDuration)
-        var calendar = Calendar.current
-        calendar.timeZone = TimeZone(abbreviation: "UTC")!
-        
-        avergeHours = String(calendar.component(.hour, from: myDate))
-        avergeMinutes = String(calendar.component(.hour, from: myDate))
-        avergeSeconds = String(calendar.component(.hour, from: myDate))
         
     }
     
@@ -49,6 +52,7 @@ public class UseStatistics: ObservableObject {
         var newDeck = deck
         var averageDurationResults: Double = 0
         var success: Float = 0
+        var averageTotalDuration: Double = 0
         
         for result in results {
             averageDurationResults += Double(result.time)
@@ -59,6 +63,12 @@ public class UseStatistics: ObservableObject {
         
         newDeck.statistics.averageDurationList.append((Double(averageDurationResults) * Double(results.count)) / 100)
         newDeck.statistics.totalSuccess = success * 100 / Float(results.count)
+        
+        for duration in newDeck.statistics.averageDurationList {
+            averageTotalDuration += duration
+        }
+        
+        newDeck.statistics.averageDuration = averageTotalDuration / Double(newDeck.statistics.averageDurationList.count - 1)
         
         return UseFlashdecks().updateDeck(newDeck: newDeck)
     }
