@@ -29,7 +29,7 @@ struct DeckRow: View {
                 .padding(.leading,30)
                 .padding(.bottom,30)
             
-            Text("10%")
+            Text("\(String(format: "%.1f", deck.statistics.totalSuccess))%")
                 .fontWeight(.heavy)
                // .font(.title)
                 .multilineTextAlignment(.leading)

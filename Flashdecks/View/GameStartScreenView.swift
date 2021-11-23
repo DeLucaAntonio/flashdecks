@@ -89,6 +89,8 @@ struct GameStartScreenView: View {
     var UIState: UIStateModel = UIStateModel()
     var Stats: SessionStats = SessionStats()
     
+    let deck: Flashdeck
+    
     var body: some View {
         
         VStack{
@@ -118,12 +120,12 @@ struct GameStartScreenView: View {
             
             Spacer()
        
-        }.navigate(to: SnapCarousel(Stats: Stats, UIState: UIState), when: $willMoveToNextScreen)
+        }.navigate(to: SnapCarousel(Stats: Stats, UIState: UIState, deck: deck), when: $willMoveToNextScreen)
     }
 }
 
-struct GameStartScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        GameStartScreenView()
-    }
-}
+//struct GameStartScreen_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GameStartScreenView()
+//    }
+//}

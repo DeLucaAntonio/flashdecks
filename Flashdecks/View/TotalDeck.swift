@@ -49,23 +49,23 @@ struct TotalDeck: View {
             
             
             VStack {
-//                if diocane == true{
-                NavigationLink(
-                    destination: GameStartScreenView()
-                        .navigationBarHidden(true),
-                    isActive: self.$isActiveLong)
+                if useFlashdecks.selectedDeck != nil{
+                    NavigationLink(
+                        destination: GameStartScreenView(deck: useFlashdecks.selectedDeck!)
+                            .navigationBarHidden(true),
+                        isActive: self.$isActiveLong)
                     {}
                     .isDetailLink(false)
-                    
-//                }
+                }
+                
                 if useFlashdecks.selectedDeck != nil {
                     NavigationLink(
-                        destination: FlashcardList(useFlashdecks: useFlashdecks, deck:useFlashdecks.selectedDeck!),
+                        destination: FlashcardList(useFlashdecks: useFlashdecks, deck: useFlashdecks.selectedDeck!),
                         isActive: self.$isActive)
                     { }
                     .isDetailLink(false)
                 }
-               
+                
             }.hidden()
             
             
@@ -78,7 +78,7 @@ struct TotalDeck: View {
                 }).simultaneousGesture(
                     LongPressGesture()
                         .onEnded { _ in
-                           
+                            
                             self.useFlashdecks.selectedDeck = deck
                             self.isActive = true
                             print("Loooong")
@@ -87,10 +87,11 @@ struct TotalDeck: View {
                     .highPriorityGesture(TapGesture()
                                             .onEnded { _ in
                         print("Tap")
+                        self.useFlashdecks.selectedDeck = deck
                         self.isActiveLong.toggle()
-                     
+                        
                     })
-                    
+                
                 
                 /*.onLongPressGesture(perform:
                  {
@@ -114,7 +115,7 @@ struct TotalDeck: View {
             
             
         }.navigationBarTitleDisplayMode(.large)
-           
+        
     }
     
 }

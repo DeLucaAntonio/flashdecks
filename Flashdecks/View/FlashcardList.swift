@@ -81,7 +81,6 @@ struct FlashcardList: View {
                                 .foregroundColor(.white)
                         }
                         
-                        
                     }
                     
                 }).padding(.horizontal)

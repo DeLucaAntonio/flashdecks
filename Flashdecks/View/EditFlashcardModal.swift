@@ -13,7 +13,6 @@ struct EditFlashcardModal: View {
     //STRUTTURE PER I CAMPI PLACEHOLDER DA CANCELLARE
     /*   @State var term: String = ""
      @State var definition: String = ""
-     
      @State var keywords: [String] = ["","",""]*/
     
 

@@ -10,6 +10,9 @@ import Foundation
 public class UseStatistics: ObservableObject {
     
     @Published var globalStatistics = GlobalStatistics(id: UUID(), totalSuccess: 0, completedSession: 0, averageDuration: 0)
+    @Published var avergeHours: String = "0"
+    @Published var avergeMinutes: String = "0"
+    @Published var avergeSeconds: String = "0"
     
     init(){
         loadStatistics()
@@ -30,6 +33,10 @@ public class UseStatistics: ObservableObject {
         
         globalStatistics.totalSuccess.self = resultSuccess
         globalStatistics.averageDuration.self = resutlDuration
+        
+        avergeHours = String(Int(resutlDuration / 3600))
+        avergeMinutes = String(Int(resutlDuration / 3600 / 60))
+        avergeSeconds = String(Int(resutlDuration / 3600 / 60 / 60))
     }
     
     // Func to register the new score game on db
