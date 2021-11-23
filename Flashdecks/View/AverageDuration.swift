@@ -34,7 +34,7 @@ struct AverageDuration: View {
                 .font(.largeTitle)
                 .frame(width: 60.02, alignment: .topLeading)
                 .lineSpacing(15.50)
-                .offset(x: -11.14, y: 27)
+                .offset(x: -9.14, y: 27)
                 .foregroundColor(.white)
             
             Text(seconds)
@@ -58,7 +58,7 @@ struct AverageDuration: View {
                 .font(.title3)
                 .frame(width: 15.35, alignment: .topLeading)
                 .lineSpacing(15.50)
-                .offset(x: -54.33, y: 30)
+                .offset(x: -48.33, y: 30)
                 .foregroundColor(Color(UIColor(named: "ColorHomeStats")!))
             
             Text("m")
@@ -89,12 +89,4 @@ struct AverageDuration: View {
     }
 }
 
-#if DEBUG
-struct AverageDuration_Previews: PreviewProvider {
-    static var previews: some View {
-        
-        
-        AverageDuration(hours: "1", minutes: "30", seconds: "45")
-    }
-}
-#endif
+

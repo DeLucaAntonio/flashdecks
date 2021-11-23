@@ -14,8 +14,10 @@ struct Home: View {
     @StateObject var useStatistics = UseStatistics()
 
     @State var sessionComplete: String = "26"
-    // @State var showSheet: Bool = false
-    //  @State var isPresentingAddModal: Bool = false
+    
+    @State var showingAlert: Bool = false
+    
+    @State var isActive: Bool = false
     
     
     @State var modalViewActive: Bool = false
@@ -133,7 +135,7 @@ struct Home: View {
                                     })
             
        }.navigationBarHidden(true)
-            .environmentObject(useFlashdecks)
+        
            
         
         
@@ -144,9 +146,44 @@ struct Home: View {
         
         ScrollView(.vertical, showsIndicators: false) {
             
-            ForEach(useFlashdecks.deckList) { deck in
-                DeckRow(deck: deck)
-            }
+            
+            VStack {
+                if useFlashdecks.selectedDeck != nil{
+                    NavigationLink(
+                        destination: GameStartScreenView(deck: useFlashdecks.selectedDeck!)
+                            .navigationBarHidden(true),
+                        isActive: self.$isActive)
+                    {}
+                    .isDetailLink(false)
+                }
+                
+                
+            }.hidden()
+            
+            
+            ForEach(useFlashdecks.deckList){deck in
+                Button(action: {
+                    print("Tap")
+                    self.useFlashdecks.selectedDeck = deck
+                    self.isActive.toggle()
+                    
+                }, label: {
+                    DeckRow(deck: deck)
+                })
+                    /*.alert(isPresented:$showingAlert) {
+                    Alert(
+                        title: Text("Can't start the session"),
+                        message: Text("There are no cards in this deck"),
+                        dismissButton: .default(Text("Got it!"))
+                    )
+                }*/
+                        
+                    }
+            
+            //STAMPA OLD
+//            ForEach(useFlashdecks.deckList) { deck in
+//                DeckRow(deck: deck)
+//            }
             
         }
         

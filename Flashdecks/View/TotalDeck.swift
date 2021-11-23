@@ -12,6 +12,7 @@ struct TotalDeck: View {
     //VAR PER IL REDIRECT DOPO IL DELETE DEL DECK
     @State var isActive : Bool = false
     @State var tapLong: Bool = false
+    @State var showingAlert: Bool = false
     
     //Long press var
     @State var longPressed: Bool = false
@@ -32,8 +33,10 @@ struct TotalDeck: View {
              
              }*/
             
-            
-            
+            if(!(useFlashdecks.deckList.isEmpty)){
+            Text("Long press on deck to open the cards list. \nTap to start the game.")
+                .fontWeight(.semibold)
+            }
             visualDeck()
         }.padding()
             .navigationTitle("All Decks")
@@ -88,9 +91,22 @@ struct TotalDeck: View {
                                             .onEnded { _ in
                         print("Tap")
                         self.useFlashdecks.selectedDeck = deck
-                        self.isActiveLong.toggle()
                         
-                    })
+                        if(useFlashdecks.selectedDeck!.flashcards.isEmpty){
+                            showingAlert=true
+                            print("No CARDS")
+                        }
+                           
+                            else{
+                        self.isActiveLong.toggle()
+                        }
+                    }) .alert(isPresented:$showingAlert) {
+                        Alert(
+                            title: Text("Can't start the session"),
+                            message: Text("There are no cards in this deck"),
+                            dismissButton: .default(Text("Got it!"))
+                        )
+                    }
                 
                 
                 /*.onLongPressGesture(perform:
