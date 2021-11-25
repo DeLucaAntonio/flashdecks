@@ -44,6 +44,7 @@ struct FlashcardList: View {
             Text(deck.description)
                 .fontWeight(.regular)
                 .multilineTextAlignment(.leading)
+                .padding()
             
             ScrollView{
                 
@@ -76,9 +77,10 @@ struct FlashcardList: View {
                                 .foregroundColor(Color(UIColor(named: "PrimaryViolet")!))
                                 .shadow(color:.gray.opacity(0.5),radius: 5,x:0,y:4)
                             Text(card.name) //VA OUT OF RANGE
-                                .font(.system(size: 26))
+                                .font(.system(size: 24))
                                 .fontWeight(.semibold)
                                 .foregroundColor(.white)
+                                .frame(width: 120, height: 200, alignment: .center)
                         }
                         
                     }

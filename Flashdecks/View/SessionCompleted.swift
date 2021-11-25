@@ -28,7 +28,7 @@ struct SessionCompleted: View {
             .foregroundColor(Color(UIColor(named: "ColorHomeStats")!))
             
         
-            Text(sessionCompleted)
+            Text("8")
             .fontWeight(.bold)
             .font(.largeTitle)
             .lineSpacing(15.50)
